@@ -10,6 +10,7 @@
 #import "FirstViewController.h"
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
+#import "Masonry.h"
 
 @interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
@@ -27,13 +28,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"主界面";
+    self.navigationController.navigationBar.translucent = NO;
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
     
-    self.pageViewController.view.frame = self.view.frame;
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).offset(0);
+    }];
     
     [self addViewContrller];
     [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
