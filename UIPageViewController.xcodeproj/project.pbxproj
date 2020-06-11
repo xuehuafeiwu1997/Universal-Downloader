@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B68B5EAD249217F400BE9142 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EAC249217F400BE9142 /* AppDelegate.m */; };
+		B68B5EB3249217F400BE9142 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EB2249217F400BE9142 /* ViewController.m */; };
+		B68B5EB8249217F600BE9142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68B5EB7249217F600BE9142 /* Assets.xcassets */; };
+		B68B5EBB249217F600BE9142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B68B5EB9249217F600BE9142 /* LaunchScreen.storyboard */; };
+		B68B5EBE249217F600BE9142 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EBD249217F600BE9142 /* main.m */; };
+		B68B5EC62492183F00BE9142 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EC52492183F00BE9142 /* MainViewController.m */; };
+		B68B5EC924921EAB00BE9142 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EC824921EAB00BE9142 /* FirstViewController.m */; };
+		B68B5ECC24921EB700BE9142 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5ECB24921EB700BE9142 /* SecondViewController.m */; };
+		B68B5ECF24921EC700BE9142 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5ECE24921EC700BE9142 /* ThirdViewController.m */; };
+		BB8F70C7F5355B3A5D05DE7E /* Pods_UIPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C609CA138FC88378573A77C /* Pods-UIPageViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIPageViewController.debug.xcconfig"; path = "Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIPageViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CAE8AC192C67A80EE718BE /* Pods-UIPageViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIPageViewController.release.xcconfig"; path = "Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController.release.xcconfig"; sourceTree = "<group>"; };
+		B68B5EA8249217F400BE9142 /* UIPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B68B5EAB249217F400BE9142 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B68B5EAC249217F400BE9142 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B68B5EB1249217F400BE9142 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B68B5EB2249217F400BE9142 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B68B5EB7249217F600BE9142 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B68B5EBA249217F600BE9142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B68B5EBC249217F600BE9142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B68B5EBD249217F600BE9142 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B68B5EC42492183F00BE9142 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B68B5EC52492183F00BE9142 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B68B5EC724921EAB00BE9142 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		B68B5EC824921EAB00BE9142 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		B68B5ECA24921EB700BE9142 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		B68B5ECB24921EB700BE9142 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		B68B5ECD24921EC700BE9142 /* ThirdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		B68B5ECE24921EC700BE9142 /* ThirdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B68B5EA5249217F400BE9142 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB8F70C7F5355B3A5D05DE7E /* Pods_UIPageViewController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4E1854F36F8719657A1C2F4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DAF62E0C3091C08658D3921 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C609CA138FC88378573A77C /* Pods-UIPageViewController.debug.xcconfig */,
+				83CAE8AC192C67A80EE718BE /* Pods-UIPageViewController.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B68B5E9F249217F400BE9142 = {
+			isa = PBXGroup;
+			children = (
+				B68B5EAA249217F400BE9142 /* UIPageViewController */,
+				B68B5EA9249217F400BE9142 /* Products */,
+				9DAF62E0C3091C08658D3921 /* Pods */,
+				4E1854F36F8719657A1C2F4F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B68B5EA9249217F400BE9142 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B68B5EA8249217F400BE9142 /* UIPageViewController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B68B5EAA249217F400BE9142 /* UIPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B68B5EAB249217F400BE9142 /* AppDelegate.h */,
+				B68B5EAC249217F400BE9142 /* AppDelegate.m */,
+				B68B5EB1249217F400BE9142 /* ViewController.h */,
+				B68B5EB2249217F400BE9142 /* ViewController.m */,
+				B68B5EC42492183F00BE9142 /* MainViewController.h */,
+				B68B5EC52492183F00BE9142 /* MainViewController.m */,
+				B68B5EC724921EAB00BE9142 /* FirstViewController.h */,
+				B68B5EC824921EAB00BE9142 /* FirstViewController.m */,
+				B68B5ECA24921EB700BE9142 /* SecondViewController.h */,
+				B68B5ECB24921EB700BE9142 /* SecondViewController.m */,
+				B68B5ECD24921EC700BE9142 /* ThirdViewController.h */,
+				B68B5ECE24921EC700BE9142 /* ThirdViewController.m */,
+				B68B5EB7249217F600BE9142 /* Assets.xcassets */,
+				B68B5EB9249217F600BE9142 /* LaunchScreen.storyboard */,
+				B68B5EBC249217F600BE9142 /* Info.plist */,
+				B68B5EBD249217F600BE9142 /* main.m */,
+			);
+			path = UIPageViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B68B5EA7249217F400BE9142 /* UIPageViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B68B5EC1249217F600BE9142 /* Build configuration list for PBXNativeTarget "UIPageViewController" */;
+			buildPhases = (
+				1D90DE76CA1D41C07DC9FDCA /* [CP] Check Pods Manifest.lock */,
+				B68B5EA4249217F400BE9142 /* Sources */,
+				B68B5EA5249217F400BE9142 /* Frameworks */,
+				B68B5EA6249217F400BE9142 /* Resources */,
+				29190653EB9E246FE54DF545 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIPageViewController;
+			productName = UIPageViewController;
+			productReference = B68B5EA8249217F400BE9142 /* UIPageViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B68B5EA0249217F400BE9142 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "许明洋";
+				TargetAttributes = {
+					B68B5EA7249217F400BE9142 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+				};
+			};
+			buildConfigurationList = B68B5EA3249217F400BE9142 /* Build configuration list for PBXProject "UIPageViewController" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B68B5E9F249217F400BE9142;
+			productRefGroup = B68B5EA9249217F400BE9142 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B68B5EA7249217F400BE9142 /* UIPageViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B68B5EA6249217F400BE9142 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B68B5EBB249217F600BE9142 /* LaunchScreen.storyboard in Resources */,
+				B68B5EB8249217F600BE9142 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D90DE76CA1D41C07DC9FDCA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UIPageViewController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29190653EB9E246FE54DF545 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B68B5EA4249217F400BE9142 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B68B5ECC24921EB700BE9142 /* SecondViewController.m in Sources */,
+				B68B5EB3249217F400BE9142 /* ViewController.m in Sources */,
+				B68B5EAD249217F400BE9142 /* AppDelegate.m in Sources */,
+				B68B5EC924921EAB00BE9142 /* FirstViewController.m in Sources */,
+				B68B5EBE249217F600BE9142 /* main.m in Sources */,
+				B68B5EC62492183F00BE9142 /* MainViewController.m in Sources */,
+				B68B5ECF24921EC700BE9142 /* ThirdViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B68B5EB9249217F600BE9142 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B68B5EBA249217F600BE9142 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B68B5EBF249217F600BE9142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B68B5EC0249217F600BE9142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B68B5EC2249217F600BE9142 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C609CA138FC88378573A77C /* Pods-UIPageViewController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NC2M6D7A5Q;
+				INFOPLIST_FILE = UIPageViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.greatyun.UIPageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B68B5EC3249217F600BE9142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CAE8AC192C67A80EE718BE /* Pods-UIPageViewController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NC2M6D7A5Q;
+				INFOPLIST_FILE = UIPageViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.greatyun.UIPageViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B68B5EA3249217F400BE9142 /* Build configuration list for PBXProject "UIPageViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B68B5EBF249217F600BE9142 /* Debug */,
+				B68B5EC0249217F600BE9142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B68B5EC1249217F600BE9142 /* Build configuration list for PBXNativeTarget "UIPageViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B68B5EC2249217F600BE9142 /* Debug */,
+				B68B5EC3249217F600BE9142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B68B5EA0249217F400BE9142 /* Project object */;
+}
