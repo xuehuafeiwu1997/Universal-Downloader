@@ -11,6 +11,7 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 #import "Masonry.h"
+#import "HJTabView.h"
 
 @interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) ThirdViewController *thirdVC;
 @property (nonatomic ,strong) NSArray <UIViewController *> *vcArray;
 @property (nonatomic) NSInteger currentIndex;
+@property (nonatomic) HJTabView *tabView;
 
 @end
 
@@ -33,19 +35,22 @@
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
     
+    [self addViewContrller];
+    
+    self.tabView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 41);
+    [self.view addSubview:self.tabView];
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.top.equalTo(self.view.mas_top).offset(0);
+        make.top.equalTo(self.tabView.mas_bottom).offset(0);
     }];
     
-    [self addViewContrller];
     [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 - (void)addViewContrller {
-    self.vcArray = [NSArray arrayWithObjects:self.firstVC,self.secondVC,self.thirdVC,nil];
+    self.vcArray = [NSArray arrayWithObjects:@"第一个tab",@"第二个tab",@"第三个tab",nil];
     self.currentIndex = 0;
 }
 
@@ -71,6 +76,16 @@
     }
     _thirdVC = [[ThirdViewController alloc] init];
     return _thirdVC;
+}
+
+- (HJTabView *)tabView {
+    if (_tabView) {
+        return _tabView;
+    }
+    _tabView = [[HJTabView alloc] init];
+    _tabView.selectIndex = self.currentIndex;
+    _tabView.titles = self.vcArray;
+    return _tabView;
 }
 
 #pragma mark - UIPageViewControllerDelegate/datesource
