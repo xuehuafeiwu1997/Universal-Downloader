@@ -8,6 +8,7 @@
 
 #import "HJTabView.h"
 #import "HJTabCollectionViewCell.h"
+#import "Masonry.h"
 
 @interface HJTabView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -65,7 +66,7 @@
     if (_selectIndex >= [self.titles count]) {
         _selectIndex = 0;
     }
-//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_selectIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - delegate/datasource
@@ -80,6 +81,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HJTabCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HJTabCollectionViewCell" forIndexPath:indexPath];
     cell.title = self.titles[indexPath.row];
+    cell.selected = indexPath.row == self.selectIndex ? YES : NO;
     return cell;
 }
 
@@ -87,8 +89,14 @@
     if (self.selectIndex == indexPath.row) {
         return;
     }
-//    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    self.selectIndex = indexPath.row;
+    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+//    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    
+//     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tabView:selectTabAtIndex:)]) {
+        [self.delegate tabView:self selectTabAtIndex:indexPath.row];
+    }
 }
 
 #pragma mark - UICollectionViewFlowLayout
@@ -97,9 +105,6 @@
     float height = CGRectGetHeight(self.collectionView.bounds);
     return CGSizeMake(floor(width / self.titles.count), height);
 }
-
-#pragma mark - UIScrollVieDelegate
-
 
 - (UICollectionView *)collectionView {
     if (_collectionView) {
@@ -114,6 +119,8 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    //加了这句话才可以触发滑动的方法
+    _collectionView.alwaysBounceHorizontal = YES;
     [_collectionView registerClass:[HJTabCollectionViewCell class] forCellWithReuseIdentifier:@"HJTabCollectionViewCell"];
     return _collectionView;
 }

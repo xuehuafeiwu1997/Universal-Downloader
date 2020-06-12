@@ -13,7 +13,7 @@
 #import "Masonry.h"
 #import "HJTabView.h"
 
-@interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,HJTabChangedDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) FirstViewController *firstVC;
@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"主界面";
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.delegate = self;
@@ -85,6 +86,7 @@
     _tabView = [[HJTabView alloc] init];
     _tabView.selectIndex = self.currentIndex;
     _tabView.titles = self.vcArray;
+    _tabView.delegate = self;
     return _tabView;
 }
 
@@ -92,7 +94,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     if (viewController == self.firstVC) {
-        return self.thirdVC;
+        return nil;
     }
     if (viewController == self.secondVC) {
         return self.firstVC;
@@ -111,9 +113,58 @@
         return self.thirdVC;
     }
     if (viewController == self.thirdVC) {
-        return self.firstVC;
+        return nil;
     }
     return nil;
+}
+
+//当翻页动画刚开始时调用,使用这个方法在切换界面时，上面的滑块滑动的比较顺畅,但是会出现一个问题，当滑动的幅度不够大时，会恢复原先的界面，但是代码已经执行了,目前没有办法解决
+//- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers {
+//    //pendingViewController包含的就是将要展示的数组
+//    UIViewController *viewController = pendingViewControllers.firstObject;
+//    if (viewController == self.firstVC) {
+//        self.tabView.selectIndex = 0;
+//    }
+//    if (viewController == self.secondVC) {
+//        self.tabView.selectIndex = 1;
+//    }
+//    if (viewController == self.thirdVC) {
+//        self.tabView.selectIndex = 2;
+//    }
+//}
+
+//当翻页动画结束时调用
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed {
+    if (completed) {
+        UIViewController *viewController = pageViewController.viewControllers.firstObject;
+        if (viewController == self.firstVC) {
+            self.tabView.selectIndex = 0;
+        }
+        if (viewController == self.secondVC) {
+            self.tabView.selectIndex = 1;
+        }
+        if (viewController == self.thirdVC) {
+            self.tabView.selectIndex = 2;
+        }
+        self.currentIndex = self.tabView.selectIndex;
+    }
+}
+
+#pragma mark - HJTabViewDelegate
+- (void)tabView:(HJTabView *)tabView selectTabAtIndex:(NSInteger)index {
+    if (self.currentIndex == index) {
+        return;
+    }
+    if (index == 0) {
+        [self.pageViewController setViewControllers:@[self.firstVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    }
+    if (index == 1) {
+        [self.pageViewController setViewControllers:@[self.secondVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+    if (index == 2) {
+        [self.pageViewController setViewControllers:@[self.thirdVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+    self.currentIndex = index;
 }
 
 @end
