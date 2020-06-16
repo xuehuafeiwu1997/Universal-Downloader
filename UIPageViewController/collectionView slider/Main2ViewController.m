@@ -37,6 +37,7 @@
     }
     _tabView = [[XMYTabView alloc] init];
     _tabView.titles = [NSArray arrayWithObjects:@"第一个tab",@"第二个tab",@"第三个tab",@"第四个tab",@"第五个tab",@"第六个tab",@"第七个tab",@"第八个tab",@"第九个tab",@"第十个tab",nil];
+//    _tabView.titles = [NSArray arrayWithObjects:@"第一个tab",@"第二个tab",@"第三个tab",nil];
     [_tabView selectIndex:0];
     return _tabView;
 }

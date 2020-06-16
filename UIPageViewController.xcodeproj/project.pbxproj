@@ -21,6 +21,9 @@
 		B68B5ED82492306E00BE9142 /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5ED72492306E00BE9142 /* UIColor+Utils.m */; };
 		B68B5F022493659500BE9142 /* Main2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F012493659500BE9142 /* Main2ViewController.m */; };
 		B68B5F062493662300BE9142 /* XMYTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F052493662300BE9142 /* XMYTabView.m */; };
+		B68B5F1624976B4300BE9142 /* Main3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1524976B4300BE9142 /* Main3ViewController.m */; };
+		B68B5F1924976B8F00BE9142 /* XMYTabViewNew.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1824976B8F00BE9142 /* XMYTabViewNew.m */; };
+		B68B5F1C24976FDF00BE9142 /* HJCollectionViewSliderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1B24976FDF00BE9142 /* HJCollectionViewSliderLayout.m */; };
 		BB8F70C7F5355B3A5D05DE7E /* Pods_UIPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,12 @@
 		B68B5F012493659500BE9142 /* Main2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Main2ViewController.m; sourceTree = "<group>"; };
 		B68B5F042493662300BE9142 /* XMYTabView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMYTabView.h; sourceTree = "<group>"; };
 		B68B5F052493662300BE9142 /* XMYTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMYTabView.m; sourceTree = "<group>"; };
+		B68B5F1424976B4300BE9142 /* Main3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Main3ViewController.h; sourceTree = "<group>"; };
+		B68B5F1524976B4300BE9142 /* Main3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Main3ViewController.m; sourceTree = "<group>"; };
+		B68B5F1724976B8F00BE9142 /* XMYTabViewNew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMYTabViewNew.h; sourceTree = "<group>"; };
+		B68B5F1824976B8F00BE9142 /* XMYTabViewNew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMYTabViewNew.m; sourceTree = "<group>"; };
+		B68B5F1A24976FDF00BE9142 /* HJCollectionViewSliderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCollectionViewSliderLayout.h; sourceTree = "<group>"; };
+		B68B5F1B24976FDF00BE9142 /* HJCollectionViewSliderLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCollectionViewSliderLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +135,7 @@
 				B68B5ED424922EEF00BE9142 /* HJTabCollectionViewCell.m */,
 				B68B5ED62492306E00BE9142 /* UIColor+Utils.h */,
 				B68B5ED72492306E00BE9142 /* UIColor+Utils.m */,
+				B68B5F1324976B1B00BE9142 /* collectionViewFlowLayout重写 */,
 				B68B5EFF2493655800BE9142 /* collectionView slider */,
 				B68B5EB7249217F600BE9142 /* Assets.xcassets */,
 				B68B5EB9249217F600BE9142 /* LaunchScreen.storyboard */,
@@ -151,6 +161,19 @@
 				B68B5F052493662300BE9142 /* XMYTabView.m */,
 			);
 			path = "collectionView slider";
+			sourceTree = "<group>";
+		};
+		B68B5F1324976B1B00BE9142 /* collectionViewFlowLayout重写 */ = {
+			isa = PBXGroup;
+			children = (
+				B68B5F1424976B4300BE9142 /* Main3ViewController.h */,
+				B68B5F1524976B4300BE9142 /* Main3ViewController.m */,
+				B68B5F1724976B8F00BE9142 /* XMYTabViewNew.h */,
+				B68B5F1824976B8F00BE9142 /* XMYTabViewNew.m */,
+				B68B5F1A24976FDF00BE9142 /* HJCollectionViewSliderLayout.h */,
+				B68B5F1B24976FDF00BE9142 /* HJCollectionViewSliderLayout.m */,
+			);
+			path = "collectionViewFlowLayout重写";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,9 +291,12 @@
 			files = (
 				B68B5ED524922EEF00BE9142 /* HJTabCollectionViewCell.m in Sources */,
 				B68B5F022493659500BE9142 /* Main2ViewController.m in Sources */,
+				B68B5F1924976B8F00BE9142 /* XMYTabViewNew.m in Sources */,
 				B68B5ECC24921EB700BE9142 /* SecondViewController.m in Sources */,
 				B68B5EB3249217F400BE9142 /* ViewController.m in Sources */,
 				B68B5ED224922B3900BE9142 /* HJTabView.m in Sources */,
+				B68B5F1C24976FDF00BE9142 /* HJCollectionViewSliderLayout.m in Sources */,
+				B68B5F1624976B4300BE9142 /* Main3ViewController.m in Sources */,
 				B68B5EAD249217F400BE9142 /* AppDelegate.m in Sources */,
 				B68B5ED82492306E00BE9142 /* UIColor+Utils.m in Sources */,
 				B68B5F062493662300BE9142 /* XMYTabView.m in Sources */,

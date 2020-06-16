@@ -66,7 +66,8 @@
 }
 
 - (void)setSelected:(BOOL)selected {
-    self.seperatorLine.hidden = selected ? NO : YES;
+//    self.seperatorLine.hidden = selected ? NO : YES;
+    self.seperatorLine.hidden = YES;
     self.titleLabel.textColor = selected ? [UIColor colorWithRGB:0xff5593] : [UIColor blackColor];
 }
 
