@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) NSArray *titles;
 @property(nonatomic, weak) id<HJTabChangedDelegate> delegate;
 
+- (void)setUnderLineViewOffset:(CGFloat)offset;
+
 @end
 
 NS_ASSUME_NONNULL_END

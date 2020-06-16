@@ -6,14 +6,13 @@
 //  Copyright © 2020 许明洋. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
-
-
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (Utils)
+
++ (BOOL)swizzleInstanceMethod:(SEL)origSelector withMethod:(SEL)newSelector;
 
 @end
 

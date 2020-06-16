@@ -24,6 +24,8 @@
 		B68B5F1624976B4300BE9142 /* Main3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1524976B4300BE9142 /* Main3ViewController.m */; };
 		B68B5F1924976B8F00BE9142 /* XMYTabViewNew.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1824976B8F00BE9142 /* XMYTabViewNew.m */; };
 		B68B5F1C24976FDF00BE9142 /* HJCollectionViewSliderLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1B24976FDF00BE9142 /* HJCollectionViewSliderLayout.m */; };
+		B68B5F1F24986CBA00BE9142 /* UIPageViewController+Scroll.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F1E24986CBA00BE9142 /* UIPageViewController+Scroll.m */; };
+		B68B5F222498A26E00BE9142 /* NSObject+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5F212498A26E00BE9142 /* NSObject+Utils.m */; };
 		BB8F70C7F5355B3A5D05DE7E /* Pods_UIPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,10 @@
 		B68B5F1824976B8F00BE9142 /* XMYTabViewNew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XMYTabViewNew.m; sourceTree = "<group>"; };
 		B68B5F1A24976FDF00BE9142 /* HJCollectionViewSliderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCollectionViewSliderLayout.h; sourceTree = "<group>"; };
 		B68B5F1B24976FDF00BE9142 /* HJCollectionViewSliderLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCollectionViewSliderLayout.m; sourceTree = "<group>"; };
+		B68B5F1D24986CBA00BE9142 /* UIPageViewController+Scroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+Scroll.h"; sourceTree = "<group>"; };
+		B68B5F1E24986CBA00BE9142 /* UIPageViewController+Scroll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPageViewController+Scroll.m"; sourceTree = "<group>"; };
+		B68B5F202498A26E00BE9142 /* NSObject+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Utils.h"; sourceTree = "<group>"; };
+		B68B5F212498A26E00BE9142 /* NSObject+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Utils.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,10 @@
 		B68B5EFE2493654100BE9142 /* pageViewController封装 */ = {
 			isa = PBXGroup;
 			children = (
+				B68B5F1D24986CBA00BE9142 /* UIPageViewController+Scroll.h */,
+				B68B5F1E24986CBA00BE9142 /* UIPageViewController+Scroll.m */,
+				B68B5F202498A26E00BE9142 /* NSObject+Utils.h */,
+				B68B5F212498A26E00BE9142 /* NSObject+Utils.m */,
 			);
 			path = "pageViewController封装";
 			sourceTree = "<group>";
@@ -301,8 +311,10 @@
 				B68B5ED82492306E00BE9142 /* UIColor+Utils.m in Sources */,
 				B68B5F062493662300BE9142 /* XMYTabView.m in Sources */,
 				B68B5EC924921EAB00BE9142 /* FirstViewController.m in Sources */,
+				B68B5F1F24986CBA00BE9142 /* UIPageViewController+Scroll.m in Sources */,
 				B68B5EBE249217F600BE9142 /* main.m in Sources */,
 				B68B5EC62492183F00BE9142 /* MainViewController.m in Sources */,
+				B68B5F222498A26E00BE9142 /* NSObject+Utils.m in Sources */,
 				B68B5ECF24921EC700BE9142 /* ThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

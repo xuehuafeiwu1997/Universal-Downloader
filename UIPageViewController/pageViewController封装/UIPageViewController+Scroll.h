@@ -6,14 +6,22 @@
 //  Copyright © 2020 许明洋. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
-
-
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol UIPageViewControllerScrollViewDelegate <NSObject>
+
+- (void)pageViewController:(UIPageViewController *)pageViewController scrollViewDidScroll:(CGFloat)offset;
+
+@end
 @interface UIPageViewController (Scroll)
+
+@property (nonatomic, weak) id<UIPageViewControllerScrollViewDelegate> scrollViewDelegate;
+@property (nonatomic, strong, readonly) UIScrollView *hj_contentScrollView;
+
+- (void)enableScroll:(BOOL)enable;
+- (UIScrollView *)findScrollView;
 
 @end
 

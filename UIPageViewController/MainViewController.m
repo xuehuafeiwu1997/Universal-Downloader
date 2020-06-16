@@ -12,8 +12,9 @@
 #import "ThirdViewController.h"
 #import "Masonry.h"
 #import "HJTabView.h"
+#import "UIPageViewController+Scroll.h"
 
-@interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,HJTabChangedDelegate>
+@interface MainViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,UIPageViewControllerScrollViewDelegate,HJTabChangedDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) FirstViewController *firstVC;
@@ -35,7 +36,7 @@
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
-    
+    self.pageViewController.scrollViewDelegate = self;
     [self addViewContrller];
     
     self.tabView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 41);
@@ -148,6 +149,10 @@
         }
         self.currentIndex = self.tabView.selectIndex;
     }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController scrollViewDidScroll:(CGFloat)offset {
+    [self.tabView setUnderLineViewOffset:offset];
 }
 
 #pragma mark - HJTabViewDelegate

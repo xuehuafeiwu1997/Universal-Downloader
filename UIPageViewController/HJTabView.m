@@ -9,10 +9,13 @@
 #import "HJTabView.h"
 #import "HJTabCollectionViewCell.h"
 #import "Masonry.h"
+#import "UIColor+Utils.h"
 
 @interface HJTabView()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UIView *underLineView;
+@property (nonatomic, assign) CGRect originalUnderLineViewFrame;
 
 @end
 
@@ -45,6 +48,8 @@
 - (void)initView {
     self.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.collectionView];
+    [self.collectionView addSubview:self.underLineView];
+    self.originalUnderLineViewFrame = [self frameForOriginUnderLineView];
 }
 
 - (void)layoutSubviews {
@@ -64,9 +69,21 @@
         _selectIndex = 0;
     }
     if (_selectIndex >= [self.titles count]) {
-        _selectIndex = 0;
+        _selectIndex = [self.titles count] - 1;
     }
-    [self.collectionView reloadData];
+    if ([self.titles count] == 0) {
+        return;
+    }
+    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:selectIndex inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    
+    UICollectionViewLayoutAttributes *attr = [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:_selectIndex inSection:0]];
+    CGPoint point = attr.center;
+    self.underLineView.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.underLineView.frame = [self frameForOriginUnderLineView];
+        self.underLineView.center = CGPointMake(point.x, 39);
+        self.originalUnderLineViewFrame = self.underLineView.frame;
+    }];
 }
 
 #pragma mark - delegate/datasource
@@ -81,7 +98,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HJTabCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HJTabCollectionViewCell" forIndexPath:indexPath];
     cell.title = self.titles[indexPath.row];
-    cell.selected = indexPath.row == self.selectIndex ? YES : NO;
+    cell.selected = self.selectIndex == indexPath.row ? YES : NO;
     return cell;
 }
 
@@ -90,13 +107,22 @@
         return;
     }
     self.selectIndex = indexPath.row;
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-//    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-    
-//     [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     if (self.delegate && [self.delegate respondsToSelector:@selector(tabView:selectTabAtIndex:)]) {
         [self.delegate tabView:self selectTabAtIndex:indexPath.row];
     }
+}
+
+- (void)setUnderLineViewOffset:(CGFloat)offset {
+    if ([self.titles count] == 0) {
+        return;
+    }
+    CGFloat viewWidth = CGRectGetWidth(self.bounds);
+    CGFloat cellWidth = CGRectGetWidth(self.collectionView.bounds) / (self.titles.count);
+    if (viewWidth == 0) {
+        return;
+    }
+    CGFloat lineOffset = offset / viewWidth * cellWidth;
+    self.underLineView.frame = CGRectOffset(self.originalUnderLineViewFrame, lineOffset, 0);
 }
 
 #pragma mark - UICollectionViewFlowLayout
@@ -123,6 +149,19 @@
     _collectionView.alwaysBounceHorizontal = YES;
     [_collectionView registerClass:[HJTabCollectionViewCell class] forCellWithReuseIdentifier:@"HJTabCollectionViewCell"];
     return _collectionView;
+}
+
+- (UIView *)underLineView {
+    if (_underLineView) {
+        return _underLineView;
+    }
+    _underLineView = [[UIView alloc] initWithFrame:[self frameForOriginUnderLineView]];
+    _underLineView.backgroundColor = [UIColor colorWithRGB:0xff5593];
+    return _underLineView;
+}
+
+- (CGRect)frameForOriginUnderLineView {
+    return CGRectMake(0, 39, 125, 2);
 }
 
 @end
