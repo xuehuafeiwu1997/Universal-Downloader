@@ -7,6 +7,7 @@
 //
 
 #import "DownloadManager.h"
+#import "FCFileManager.h"
 
 @interface DownloadManager()<NSURLSessionDelegate,NSURLSessionDownloadDelegate>
 
@@ -18,9 +19,22 @@
     static DownloadManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        //如果存在这个路径，则直接返回，否则创建这个路径
+        [DownloadManager createDirectionaries];
         instance = [[self alloc] init];
     });
     return instance;
+}
+
++ (void)createDirectionaries {
+    NSString *path = [self saveFilePath];
+    if ([FCFileManager existsItemAtPath:path]) {
+        return;
+    }
+    NSError *error = nil;
+    if (![FCFileManager createDirectoriesForPath:path error:&error]) {
+        AppLog(@"Error create directories %@ , %@",path, error);
+    }
 }
 
 - (void)downloadVideoByURl:(NSURL *)url {
@@ -55,11 +69,33 @@
 //此方法只有下载成功才会被调用，文件放在location位置
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSLog(@"文件下载成功存放的位置为%@",location);
+    
+    NSString *path = [DownloadManager saveFilePath];
+    NSString *destinationPath = [path stringByAppendingPathComponent:@"test.m3u8"];
+//    if (![FCFileManager existsItemAtPath:destinationPath]) {
+//        
+//        [FCFileManager createFileAtPath:destinationPath];
+//    }
+//    [FCFileManager moveItemAtPath:location.path toPath:destinationPath overwrite:YES];
+//    [FCFileManager copyItemAtPath:location.path toPath:destinationPath overwrite:YES];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
+    NSLog(@"error为%@",error);
+    
+    NSLog(@"执行了挪动文件的方法");
 }
 
 //此方法无论成功或者失败都会调用
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     NSLog(@"完成：error %@",error);
+}
+
++ (NSString *)rootPath {
+    return [FCFileManager pathForLibraryDirectoryWithPath:@"st"];
+}
+
++ (NSString *)saveFilePath {
+    return [[DownloadManager rootPath] stringByAppendingPathComponent:@"download"];
 }
 
 @end
