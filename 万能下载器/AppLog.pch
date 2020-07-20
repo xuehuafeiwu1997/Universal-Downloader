@@ -1,0 +1,14 @@
+//
+//  AppLog.pch
+//  万能下载器
+//
+//  Created by 许明洋 on 2020/7/17.
+//  Copyright © 2020 许明洋. All rights reserved.
+//
+
+#ifndef AppLog_pch
+#define AppLog_pch
+
+#define AppLog(format,...); NSLog((@"方法名:%s , 行号:%d 行," format), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#endif /* AppLog_pch */
