@@ -49,7 +49,7 @@
     [self.view addSubview:self.startButton];
     [self.startButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(20);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-30);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-60);
         make.width.equalTo(@60);
         make.height.equalTo(@20);
     }];

@@ -7,18 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61FF7B824C6FF5200EC6E0F /* WNTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61FF7B724C6FF5200EC6E0F /* WNTabBarController.m */; };
+		B61FF7BD24C7009F00EC6E0F /* WNUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B61FF7BC24C7009F00EC6E0F /* WNUserViewController.m */; };
+		B61FF7C424C7040900EC6E0F /* tab_myInfo_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FF7C024C7040800EC6E0F /* tab_myInfo_off@2x.png */; };
+		B61FF7C524C7040900EC6E0F /* tab_recommend_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FF7C124C7040800EC6E0F /* tab_recommend_on@2x.png */; };
+		B61FF7C624C7040900EC6E0F /* tab_myInfo_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FF7C224C7040800EC6E0F /* tab_myInfo_on@2x.png */; };
+		B61FF7C724C7040900EC6E0F /* tab_recommend_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FF7C324C7040900EC6E0F /* tab_recommend_off@2x.png */; };
 		B63264C224C19C83003BC3DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264C124C19C83003BC3DB /* AppDelegate.m */; };
 		B63264CD24C19C86003BC3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B63264CC24C19C86003BC3DB /* Assets.xcassets */; };
 		B63264D024C19C86003BC3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63264CE24C19C86003BC3DB /* LaunchScreen.storyboard */; };
 		B63264D324C19C86003BC3DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264D224C19C86003BC3DB /* main.m */; };
 		B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264DA24C19D63003BC3DB /* DownloadViewController.m */; };
 		B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AB63824C1B2500041BF76 /* DownloadManager.m */; };
+		B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678DC8624C708B2005A6DEA /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		292F7E860081F2534B601306 /* Pods-万能下载器.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-万能下载器.release.xcconfig"; path = "Target Support Files/Pods-万能下载器/Pods-万能下载器.release.xcconfig"; sourceTree = "<group>"; };
 		6A6F856A70458CB5C8DECF99 /* Pods-万能下载器.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-万能下载器.debug.xcconfig"; path = "Target Support Files/Pods-万能下载器/Pods-万能下载器.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE3FF703AEAA5EB8A866B73 /* Pods______.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods______.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B61FF7B624C6FF5200EC6E0F /* WNTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WNTabBarController.h; sourceTree = "<group>"; };
+		B61FF7B724C6FF5200EC6E0F /* WNTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WNTabBarController.m; sourceTree = "<group>"; };
+		B61FF7BB24C7009F00EC6E0F /* WNUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WNUserViewController.h; sourceTree = "<group>"; };
+		B61FF7BC24C7009F00EC6E0F /* WNUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WNUserViewController.m; sourceTree = "<group>"; };
+		B61FF7C024C7040800EC6E0F /* tab_myInfo_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_myInfo_off@2x.png"; sourceTree = "<group>"; };
+		B61FF7C124C7040800EC6E0F /* tab_recommend_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_recommend_on@2x.png"; sourceTree = "<group>"; };
+		B61FF7C224C7040800EC6E0F /* tab_myInfo_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_myInfo_on@2x.png"; sourceTree = "<group>"; };
+		B61FF7C324C7040900EC6E0F /* tab_recommend_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_recommend_off@2x.png"; sourceTree = "<group>"; };
 		B63264BD24C19C83003BC3DB /* 万能下载器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "万能下载器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63264C024C19C83003BC3DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B63264C124C19C83003BC3DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,6 +46,8 @@
 		B64AB63724C1B2500041BF76 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		B64AB63824C1B2500041BF76 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		B64AB63A24C1C0E40041BF76 /* AppLog.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLog.pch; sourceTree = "<group>"; };
+		B678DC8524C708B2005A6DEA /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		B678DC8624C708B2005A6DEA /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +78,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B61FF7B224C6FEB500EC6E0F /* base */ = {
+			isa = PBXGroup;
+			children = (
+				B61FF7BF24C703DF00EC6E0F /* resource */,
+				B61FF7BE24C703D600EC6E0F /* controller */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		B61FF7B924C6FFBF00EC6E0F /* Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				B63264D924C19D63003BC3DB /* DownloadViewController.h */,
+				B63264DA24C19D63003BC3DB /* DownloadViewController.m */,
+				B64AB63724C1B2500041BF76 /* DownloadManager.h */,
+				B64AB63824C1B2500041BF76 /* DownloadManager.m */,
+			);
+			path = Downloader;
+			sourceTree = "<group>";
+		};
+		B61FF7BA24C7003100EC6E0F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B61FF7BB24C7009F00EC6E0F /* WNUserViewController.h */,
+				B61FF7BC24C7009F00EC6E0F /* WNUserViewController.m */,
+				B678DC8524C708B2005A6DEA /* TestViewController.h */,
+				B678DC8624C708B2005A6DEA /* TestViewController.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B61FF7BE24C703D600EC6E0F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B61FF7B624C6FF5200EC6E0F /* WNTabBarController.h */,
+				B61FF7B724C6FF5200EC6E0F /* WNTabBarController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		B61FF7BF24C703DF00EC6E0F /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				B61FF7C024C7040800EC6E0F /* tab_myInfo_off@2x.png */,
+				B61FF7C224C7040800EC6E0F /* tab_myInfo_on@2x.png */,
+				B61FF7C324C7040900EC6E0F /* tab_recommend_off@2x.png */,
+				B61FF7C124C7040800EC6E0F /* tab_recommend_on@2x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		B63264B424C19C83003BC3DB = {
 			isa = PBXGroup;
 			children = (
@@ -82,12 +150,11 @@
 		B63264BF24C19C83003BC3DB /* 万能下载器 */ = {
 			isa = PBXGroup;
 			children = (
+				B61FF7B224C6FEB500EC6E0F /* base */,
 				B63264C024C19C83003BC3DB /* AppDelegate.h */,
 				B63264C124C19C83003BC3DB /* AppDelegate.m */,
-				B63264D924C19D63003BC3DB /* DownloadViewController.h */,
-				B63264DA24C19D63003BC3DB /* DownloadViewController.m */,
-				B64AB63724C1B2500041BF76 /* DownloadManager.h */,
-				B64AB63824C1B2500041BF76 /* DownloadManager.m */,
+				B61FF7B924C6FFBF00EC6E0F /* Downloader */,
+				B61FF7BA24C7003100EC6E0F /* User */,
 				B63264CC24C19C86003BC3DB /* Assets.xcassets */,
 				B63264CE24C19C86003BC3DB /* LaunchScreen.storyboard */,
 				B63264D124C19C86003BC3DB /* Info.plist */,
@@ -156,8 +223,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61FF7C524C7040900EC6E0F /* tab_recommend_on@2x.png in Resources */,
+				B61FF7C424C7040900EC6E0F /* tab_myInfo_off@2x.png in Resources */,
+				B61FF7C624C7040900EC6E0F /* tab_myInfo_on@2x.png in Resources */,
 				B63264D024C19C86003BC3DB /* LaunchScreen.storyboard in Resources */,
 				B63264CD24C19C86003BC3DB /* Assets.xcassets in Resources */,
+				B61FF7C724C7040900EC6E0F /* tab_recommend_off@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,9 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61FF7BD24C7009F00EC6E0F /* WNUserViewController.m in Sources */,
 				B63264C224C19C83003BC3DB /* AppDelegate.m in Sources */,
+				B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */,
 				B63264D324C19C86003BC3DB /* main.m in Sources */,
 				B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */,
+				B61FF7B824C6FF5200EC6E0F /* WNTabBarController.m in Sources */,
 				B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

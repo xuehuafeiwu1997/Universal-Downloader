@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DownloadViewController.h"
+#import "WNTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -20,9 +21,10 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    DownloadViewController *downloadVC = [[DownloadViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:downloadVC];
-    self.window.rootViewController = nav;
+//    DownloadViewController *downloadVC = [[DownloadViewController alloc] init];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:downloadVC];
+    WNTabBarController *tabController = [[WNTabBarController alloc] init];
+    self.window.rootViewController = tabController;
     return YES;
 }
 

@@ -71,7 +71,7 @@
     NSLog(@"文件下载成功存放的位置为%@",location);
     
     NSString *path = [DownloadManager saveFilePath];
-    NSString *destinationPath = [path stringByAppendingPathComponent:@"test.m3u8"];
+    NSString *destinationPath = [path stringByAppendingPathComponent:@"test.jpg"];
 //    if (![FCFileManager existsItemAtPath:destinationPath]) {
 //        
 //        [FCFileManager createFileAtPath:destinationPath];
