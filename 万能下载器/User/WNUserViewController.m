@@ -7,7 +7,6 @@
 //
 
 #import "WNUserViewController.h"
-#import "TestViewController.h"
 
 @interface WNUserViewController ()
 
@@ -20,11 +19,8 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    TestViewController *testVC = [[TestViewController alloc] init];
-    [self.navigationController pushViewController:testVC animated:YES];
+    self.navigationController.navigationBar.translucent = NO;
+    self.title = @"个人中心";
 }
 
 @end
