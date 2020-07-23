@@ -1,20 +1,24 @@
 PODS:
   - FCFileManager (1.0.20)
   - Masonry (1.1.0)
+  - "NSString+Ruby (1.1)"
 
 DEPENDENCIES:
   - FCFileManager (~> 1.0.19)
   - Masonry
+  - "NSString+Ruby (~> 1.1)"
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - FCFileManager
     - Masonry
+    - "NSString+Ruby"
 
 SPEC CHECKSUMS:
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  "NSString+Ruby": e68b2d9408107888f3d82436b0d1cd24c66c4b5b
 
-PODFILE CHECKSUM: ac250acc9bc099e5fb4358b809c935c5b3231433
+PODFILE CHECKSUM: bf0130ba40f81bf160935675ab1b7f8fc1a9c9b6
 
 COCOAPODS: 1.9.0

@@ -8,8 +8,12 @@
 
 #import "DownloadManager.h"
 #import "FCFileManager.h"
+#import "NSString+Ruby.h"
 
 @interface DownloadManager()<NSURLSessionDelegate,NSURLSessionDownloadDelegate>
+
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSMutableArray *segmentInfos;
 
 @end
 
@@ -38,9 +42,15 @@
 }
 
 - (void)downloadVideoByURl:(NSURL *)url {
+    self.url = url;
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     //开启下载任务
-    [[[self session] downloadTaskWithRequest:request] resume];
+//    [[[self session] downloadTaskWithRequest:request] resume];
+    [[self downloadTaskForRequest:request] resume];
+}
+
+- (NSURLSessionDownloadTask *)downloadTaskForRequest:(NSURLRequest *)request {
+    return [[self session] downloadTaskWithRequest:request];
 }
 
 #pragma mark - URLSession
@@ -69,9 +79,15 @@
 //此方法只有下载成功才会被调用，文件放在location位置
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     NSLog(@"文件下载成功存放的位置为%@",location);
+    NSData *m3u8Data = [[NSData alloc] initWithContentsOfURL:location];
+    NSString *m3u8 = [[NSString alloc] initWithData:m3u8Data encoding:NSUTF8StringEncoding];
+    [self parseM3U8File:m3u8 m3u8Url:self.url];
+    
+    NSString *newPath = [self createLocalM3u8];
+    NSLog(@"执行了这里");
     
     NSString *path = [DownloadManager saveFilePath];
-    NSString *destinationPath = [path stringByAppendingPathComponent:@"test.jpg"];
+    NSString *destinationPath = [path stringByAppendingPathComponent:@"mubaishou.m3u8"];
 //    if (![FCFileManager existsItemAtPath:destinationPath]) {
 //        
 //        [FCFileManager createFileAtPath:destinationPath];
@@ -83,6 +99,7 @@
     NSLog(@"error为%@",error);
     
     NSLog(@"执行了挪动文件的方法");
+    
 }
 
 //此方法无论成功或者失败都会调用
@@ -96,6 +113,116 @@
 
 + (NSString *)saveFilePath {
     return [[DownloadManager rootPath] stringByAppendingPathComponent:@"download"];
+}
+
+//解析m3u8
+- (void)parseM3U8File:(NSString *)m3u8 m3u8Url:(NSURL *)url {
+    NSInteger segCount = 0;
+    NSMutableString *headers = [[NSMutableString alloc] init];
+    NSMutableArray *segments = [NSMutableArray array];
+    NSMutableArray *otherFilesToDownload = [NSMutableArray array];//ts文件加密密钥
+    BOOL headerFinished = NO;
+    NSScanner *scanner = [NSScanner scannerWithString:m3u8];
+    NSMutableCharacterSet *cs = [[NSMutableCharacterSet alloc] init];
+    [cs addCharactersInString:@"\r\n"];
+    NSString *morem3u8 = nil;
+    NSUInteger rangeStart = 0;
+    while (![scanner isAtEnd]) {
+        NSString *line = nil;
+        [scanner scanUpToCharactersFromSet:cs intoString:&line];
+        if ([line startsWith:@"#EXTINF",nil]) {
+            headerFinished = YES;
+            NSString *nextLine = nil;
+            NSString *range = nil;
+            while (1) {
+                //scanner扫描器似乎会自动切换到下一行
+                [scanner scanUpToCharactersFromSet:cs intoString:&nextLine];
+                //当nextLine是最后一行的时候
+                if (![nextLine startsWith:@"#EXT",nil]) {
+                    break;
+                }
+                //目前用不到
+//                if ([nextLine startsWith:@"#EXT-X-BYTERANGE:",nil]) {
+//                    NSString *rangeStr =
+//                }
+                line = [line stringByAppendingString:@"\n"];
+                line = [line stringByAppendingString:nextLine];
+            }
+            NSString *segmentUrl = nextLine;
+            if (![segmentUrl startsWith:@"http://",@"https://",nil]) {
+                NSURL *trueUrl = [NSURL URLWithString:segmentUrl relativeToURL:url];
+                segmentUrl = trueUrl.absoluteString;
+            }
+            NSMutableDictionary *segment = [NSMutableDictionary dictionary];
+            segment[@"tag"] = line;
+            segment[@"url"] = segmentUrl;
+            if (range && [range length] > 0) {
+                segment[@"range"] = range;
+            }
+            [segments addObject:segment];
+            segCount++;
+        } else if ([line startsWith:@"#EXT-X-ENDLIST"]) {
+            //表示这是m3u8的最后一行
+        }
+    }
+    self.segmentInfos = segments;
+    NSLog(@"当前的 segmentInfo为:%@",self.segmentInfos);
+}
+
+- (NSString *)createLocalM3u8 {
+    NSMutableString *m3u8 = [[NSMutableString alloc] init];
+    NSInteger passedCount = 0;
+    for (NSDictionary *seg in self.segmentInfos) {
+        if (seg[@"url"] && seg[@"tag"]) {
+            if ([seg[@"pass"] boolValue]) {
+                passedCount++;
+            }
+            //下载其他文件
+//            if (seg[@"file"]) {
+//                [m3u8 appendString:seg[@"tag"]];
+//
+//            }
+            [m3u8 appendString:seg[@"tag"]];
+            [m3u8 appendString:@"\n"];
+            [m3u8 appendString:seg[@"url"]];
+            [m3u8 appendString:@"\n"];
+        } else {
+            if (seg[@"tag"]) {
+                [m3u8 appendString:seg[@"tag"]];
+                [m3u8 appendString:@"\n"];
+            }
+        }
+    }
+    NSString *path = [DownloadManager saveFilePath];
+    NSString *destinationPath = [path stringByAppendingPathComponent:@"play.m3u8"];
+    if (![FCFileManager existsItemAtPath:destinationPath]) {
+        [FCFileManager createFileAtPath:destinationPath error:nil];
+    }
+    NSError *error = nil;
+    BOOL success = [m3u8 writeToFile:destinationPath atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (success) {
+        NSLog(@"文件写入成功");
+    } else {
+        NSLog(@"写入文件发生的错误为:%@",error);
+    }
+    return destinationPath;
+}
+
+//下载m3u8文件
+- (void)downloadVideoTsByM3u8File {
+    AppLog(@"开始下载ts");
+    NSMutableDictionary *segToDownload = nil;
+    segToDownload = self.segmentInfos[0];
+    if (!segToDownload[@"url"]) {
+        return;
+    }
+    NSURL *url = [NSURL URLWithString:segToDownload[@"url"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+//    [[[self session] downloadTaskWithRequest:request] resume];
+    [[self downloadTaskForRequest:request] resume];
+    NSURLSessionDownloadTask *task = [[self session] downloadTaskWithRequest:request];
+    NSLog(@"task的identifier为%lu",(unsigned long)task.taskIdentifier);
+    [task resume];
 }
 
 @end

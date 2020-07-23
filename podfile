@@ -7,5 +7,5 @@ target '万能下载器' do
    use_frameworks!
    pod 'Masonry'
    pod 'FCFileManager', '~> 1.0.19'
-
+   pod 'NSString+Ruby', '~> 1.1'
 end
