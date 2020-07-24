@@ -20,6 +20,7 @@
 		B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264DA24C19D63003BC3DB /* DownloadViewController.m */; };
 		B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AB63824C1B2500041BF76 /* DownloadManager.m */; };
 		B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678DC8624C708B2005A6DEA /* TestViewController.m */; };
+		B6E188A724C9A45800ECBB4B /* DownloadSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E188A624C9A45800ECBB4B /* DownloadSegment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		B64AB63A24C1C0E40041BF76 /* AppLog.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLog.pch; sourceTree = "<group>"; };
 		B678DC8524C708B2005A6DEA /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		B678DC8624C708B2005A6DEA /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		B6E188A524C9A45800ECBB4B /* DownloadSegment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadSegment.h; sourceTree = "<group>"; };
+		B6E188A624C9A45800ECBB4B /* DownloadSegment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				B63264DA24C19D63003BC3DB /* DownloadViewController.m */,
 				B64AB63724C1B2500041BF76 /* DownloadManager.h */,
 				B64AB63824C1B2500041BF76 /* DownloadManager.m */,
+				B6E188A524C9A45800ECBB4B /* DownloadSegment.h */,
+				B6E188A624C9A45800ECBB4B /* DownloadSegment.m */,
 			);
 			path = Downloader;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */,
 				B61FF7B824C6FF5200EC6E0F /* WNTabBarController.m in Sources */,
 				B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */,
+				B6E188A724C9A45800ECBB4B /* DownloadSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
