@@ -92,7 +92,9 @@
 
 - (void)finishDownload {
     AppLog(@"终止下载");
-    
+    NSLog(@"开始合并ts文件");
+    [[DownloadManager sharedInstance] combineTsToVideo];
+
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {

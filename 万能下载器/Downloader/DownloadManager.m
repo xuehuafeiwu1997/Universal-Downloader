@@ -285,4 +285,33 @@
     return _downloadTasks;
 }
 
+- (void)combineTsToVideo {
+    NSString *path = [DownloadManager saveFilePath];
+    NSString *fileName = @"慕白首第二集.ts";
+    NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:fileName];
+    if ([FCFileManager existsItemAtPath:filePath]) {
+        NSLog(@"已经合并过该文件");
+        return;
+    }
+    
+    NSArray *contentArr = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
+    NSMutableData *dataArr = [[NSMutableData alloc] init];
+    int videoCount = 0;
+    for (NSString *str in contentArr) {
+        //按顺序拼接ts文件
+        if ([str containsString:@"ts"]) {
+            NSString *videoName = [NSString stringWithFormat:@"%d.ts",videoCount];
+            NSString *videoPath = [path stringByAppendingPathComponent:videoName];
+            //读出数据
+            NSData *data = [[NSData alloc] initWithContentsOfFile:videoPath];
+            //合并数据
+            [dataArr appendData:data];
+            videoCount++;
+        }
+    }
+    
+    [dataArr writeToFile:filePath atomically:YES];
+    AppLog(@"合并TS文件成功");
+}
+
 @end

@@ -14,5 +14,8 @@
 
 - (void)downloadVideoByURl:(NSURL *)url;
 
+//将TS文件合并
+- (void)combineTsToVideo;
+
 @end
 
