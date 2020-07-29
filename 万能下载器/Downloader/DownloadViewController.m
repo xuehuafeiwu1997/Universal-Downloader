@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UIButton *pauseButton;
 @property (nonatomic, strong) UIButton *finishButton;
+@property (nonatomic, strong) UIButton *clearButton;
 @property (nonatomic, strong) NSURL *url;
 
 @end
@@ -95,6 +96,10 @@
     NSLog(@"开始合并ts文件");
     [[DownloadManager sharedInstance] combineTsToVideo];
 
+}
+
+- (void)clearUrl {
+    AppLog(@"清除文本框中的url");
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
@@ -182,6 +187,21 @@
     _finishButton.layer.cornerRadius = 10;
     _pauseButton.clipsToBounds = YES;
     return _finishButton;
+}
+
+- (UIButton *)clearButton {
+    if (_clearButton) {
+        return _clearButton;
+    }
+    _clearButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    _clearButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_clearButton setTitle:@"清空文本框url" forState:UIControlStateNormal];
+    [_clearButton addTarget:self action:@selector(clearUrl) forControlEvents:UIControlEventTouchUpInside];
+    _clearButton.layer.cornerRadius = 10;
+    _clearButton.clipsToBounds = YES;
+    _clearButton.enabled = YES;
+    return _clearButton;
 }
 
 @end

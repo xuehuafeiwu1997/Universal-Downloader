@@ -16,8 +16,16 @@
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSMutableArray *segmentInfos;
 @property (nonatomic, strong) NSMutableDictionary *downloadTasks;
+@property (nonatomic, strong) NSOperationQueue *queue;//设置一个队列，将其他的任务放进队列，异步执行，实现多线程的下载
+@property (nonatomic, assign) NSInteger maxDownloadCount;
 
 @end
+
+void runAsynOnDownloadOperationQueue(void (^block) (void)) {
+    NSOperationQueue *q = [DownloadManager sharedInstance].queue;
+    NSBlockOperation *bo = [NSBlockOperation blockOperationWithBlock:block];
+    [q addOperation:bo];
+};
 
 @implementation DownloadManager
 
@@ -30,6 +38,13 @@
         instance = [[self alloc] init];
     });
     return instance;
+}
+
+- (instancetype)init {
+    self = [super init];
+    self.queue = [[NSOperationQueue alloc] init];
+    self.queue.maxConcurrentOperationCount = 5;//设置线程的最大并发数量
+    return self;
 }
 
 + (void)createDirectionaries {
@@ -74,42 +89,24 @@
     if (totalBytesExpectedToWrite == NSURLSessionTransferSizeUnknown) {
         NSLog(@"进度无法获取");
     } else {
-        NSLog(@"当前进度%f",(float)totalBytesWritten / totalBytesExpectedToWrite);
+        NSLog(@"当前线程%@,当前进度%f",[NSThread currentThread],(float)totalBytesWritten / totalBytesExpectedToWrite);
     }
 }
 
 //此方法只有下载成功才会被调用，文件放在location位置
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-    if (self.downloadTasks[downloadTask]) {
-        DownloadSegment *segment = self.downloadTasks[downloadTask];
-        //转存文件
-        //必须要在这个线程中完成
-        NSString *fileName = segment.info[@"fileName"];
-        if (!fileName || [fileName length] == 0) {
-            fileName = [self fileNameForSegmentNo:segment.index fileType:@"ts"];
-        }
-        NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:fileName];
-        NSError *err = nil;
-        [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:filePath] error:&err];
-        NSLog(@"下载的ts文件是否出错%@",err);
-        
-        if (segment.index < self.segmentInfos.count - 1) {
-            [self downloadVideoTsByM3u8File];
-        }
-        return;
-    }
-    NSLog(@"文件下载成功存放的位置为%@",location);
-    NSData *m3u8Data = [[NSData alloc] initWithContentsOfURL:location];
-    NSString *m3u8 = [[NSString alloc] initWithData:m3u8Data encoding:NSUTF8StringEncoding];
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-//       [self parseM3U8File:m3u8 m3u8Url:self.url];
-//        NSString *newPath = [self createLocalM3u8];
-//        NSLog(@"执行了这里");
-//        return;
-//    });
-    [self parseM3U8File:m3u8 m3u8Url:self.url];
-    [self createLocalM3u8];
     
+    NSString *type = [self.url absoluteString];
+       if ([type containsString:@"m3u8"]) {
+           AppLog(@"当前需要下载的文件类型为m3u8");
+           [self FileIsM3U8DownloadTask:downloadTask didFinishDownloadingToURL:location];
+       } else if ([type containsString:@"mp4"]) {
+           AppLog(@"当前需要下载的文件类型为视频mp4");
+           [self FileIsMp4DownloadTask:downloadTask didFinishDownloadingToURL:location];
+       } else if ([type containsString:@"jpg"] || [type containsString:@"png"] || [type containsString:@"JPEG"]) {
+           AppLog(@"当前需要下载的文件类型为图片");
+           [self FileIsPhotoDownloadTask:downloadTask didFinishDownloadingToURL:location];
+       }
 //    NSString *path = [DownloadManager saveFilePath];
 //    NSString *destinationPath = [path stringByAppendingPathComponent:@"mubaishou.m3u8"];
 ////    if (![FCFileManager existsItemAtPath:destinationPath]) {
@@ -124,6 +121,111 @@
 //
 //    NSLog(@"执行了挪动文件的方法");
     
+}
+
+//下载的文件是图片的话，图片下载后续的处理
+- (void)FileIsPhotoDownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"Photo"];
+    if (![FCFileManager existsItemAtPath:path]) {
+        NSError *error = nil;
+        [FCFileManager createDirectoriesForPath:path error:&error];
+        if (error) {
+            NSLog(@"创建photo文件夹失败，失败的原因是%@",error);
+        }
+    }
+    NSString *fileName = [NSString stringWithFormat:@"焰灵姬.%@",[self judgePhotoTypeByLocationUrl:location]];
+    NSLog(@"当前需要下载的图片的type为:%@",fileName);
+    //将临时存储的文件地址移动到我们自定义的地址中
+    NSString *destinationPath = [path stringByAppendingPathComponent:fileName];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
+    if (error) {
+        AppLog(@"移动图片失败，相应的失效的原因为%@",error);
+    }
+}
+
+- (NSString *)judgePhotoTypeByLocationUrl:(NSURL *)location {
+    //判断下载完成的图片的类型，参考SDWebImage的判断实现
+    NSData *imageData = [NSData dataWithContentsOfURL:location];
+    uint8_t c;
+    [imageData getBytes:&c length:1];
+    switch (c) {
+        case 0xFF:
+            return @"jpeg";
+            break;
+        case 0x89:
+            return @"png";
+            break;
+        case 0x49:
+        case 0x4D:
+            return @"tiff";
+            break;
+        case 0x52:
+            if (imageData.length > 12) {
+                //RIFF...WEBP
+                   NSString *testString = [[NSString alloc] initWithData:[imageData subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];
+                             if ([testString hasPrefix:@"RIFF"] && [testString hasSuffix:@"WEBP"]) {
+                                 return @"webp";
+                }
+            }
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
+
+//下载的文件是mp4的话，m3u8下载完成的后续处理
+- (void)FileIsMp4DownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"mp4"];
+    if (![FCFileManager existsItemAtPath:path]) {
+        NSError *error = nil;
+//        [FCFileManager createFileAtPath:path error:&error];
+        [FCFileManager createDirectoriesForPath:path error:&error];
+        if (error) {
+            AppLog(@"创建mp4文件夹失败，错误为%@",error);
+        }
+    }
+    //将临时存储文件的地址挪到我们自定义的地方
+    NSString *destinationPath = [path stringByAppendingPathComponent:@"test.mp4"];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
+    if (error) {
+        AppLog(@"在移动mp4的文件时出错，错误为%@",error);
+    }
+    AppLog(@"下载文件完成，存储的路径为%@",destinationPath);
+}
+
+//下载的文件是m3u8的话，m3u8下载完成的后续处理
+- (void)FileIsM3U8DownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"m3u8"];
+    if (![FCFileManager existsItemAtPath:path]) {
+        NSError *error = nil;
+//        [FCFileManager createFileAtPath:path error:&error];
+        [FCFileManager createDirectoriesForPath:path error:&error];
+        if (error) {
+            AppLog(@"创建m3u8文件夹失败，错误为%@",error);
+        }
+    }
+    if (self.downloadTasks[downloadTask]) {
+        DownloadSegment *segment = self.downloadTasks[downloadTask];
+        //转存文件
+        //必须要在这个线程中完成
+        NSString *fileName = segment.info[@"fileName"];
+        if (!fileName || [fileName length] == 0) {
+            fileName = [self fileNameForSegmentNo:segment.index fileType:@"ts"];
+        }
+        NSString *filePath = [path stringByAppendingPathComponent:fileName];
+        NSError *err = nil;
+        [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:filePath] error:&err];
+        NSLog(@"下载的ts文件是否出错%@",err);
+        return;
+    }
+    NSLog(@"文件下载成功存放的位置为%@",location);
+    NSData *m3u8Data = [[NSData alloc] initWithContentsOfURL:location];
+    NSString *m3u8 = [[NSString alloc] initWithData:m3u8Data encoding:NSUTF8StringEncoding];
+    [self parseM3U8File:m3u8 m3u8Url:self.url];
+    [self createLocalM3u8:path];
 }
 
 //此方法无论成功或者失败都会调用
@@ -191,7 +293,9 @@
     }
     self.segmentInfos = segments;
     NSLog(@"当前的 segmentInfo为:%@",self.segmentInfos);
-    [self downloadVideoTsByM3u8File];
+    runAsynOnDownloadOperationQueue(^{
+       [self downloadVideoTsByM3u8File];
+    });
 //    for (int i = 0; i < self.segmentInfos.count; i++) {
 //        NSString *s = self.segmentInfos[i][@"url"];
 //        NSURL *url = [NSURL URLWithString:s];
@@ -207,7 +311,7 @@
 //    }
 }
 
-- (void)createLocalM3u8 {
+- (void)createLocalM3u8:(NSString *)path {
     NSMutableString *m3u8 = [[NSMutableString alloc] init];
     NSInteger passedCount = 0;
     for (NSDictionary *seg in self.segmentInfos) {
@@ -231,7 +335,6 @@
             }
         }
     }
-    NSString *path = [DownloadManager saveFilePath];
     NSString *destinationPath = [path stringByAppendingPathComponent:@"play.m3u8"];
     if (![FCFileManager existsItemAtPath:destinationPath]) {
         [FCFileManager createFileAtPath:destinationPath error:nil];
@@ -247,6 +350,9 @@
 
 //下载m3u8文件
 - (void)downloadVideoTsByM3u8File {
+//    if ([self.downloadTasks count] >= [self maxDownloadCount]) {
+//        return;
+//    }
     static int i = 0;
     if (i >= self.segmentInfos.count) {
         return;
@@ -267,13 +373,16 @@
     NSLog(@"task的identifier为%lu",(unsigned long)task.taskIdentifier);
     [task resume];
     i++;
+    runAsynOnDownloadOperationQueue(^{
+        [self downloadVideoTsByM3u8File];
+        NSLog(@"当前的线程为%@",[NSThread currentThread]);
+    });
 }
 
 - (NSString *)fileNameForSegmentNo:(NSInteger)segmentNo fileType:(NSString *)ext {
     if (!ext) {
         ext = @"mp4";
     }
-//    return [NSString stringWithFormat:@"segment/%@.%@",@(segmentNo),ext];
     return [NSString stringWithFormat:@"%@.%@",@(segmentNo),ext];
 }
 
@@ -312,6 +421,18 @@
     
     [dataArr writeToFile:filePath atomically:YES];
     AppLog(@"合并TS文件成功");
+}
+
+- (NSInteger)maxDownloadCount {
+    if (_maxDownloadCount <= 0) {
+        return 5;
+    }
+    return _maxDownloadCount;
+}
+
+//将合并后的ts文件转换成mp4格式 （需要使用ffmpeg 目前还是先不做了，留个接口在这）
+- (void)coverFullTsToMP4:(NSString *)filePath {
+    
 }
 
 @end
