@@ -425,8 +425,8 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 }
 
 - (void)combineTsToVideo {
-    NSString *path = [DownloadManager saveFilePath];
-    NSString *fileName = @"慕白首第二集.ts";
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"m3u8"];
+    NSString *fileName = @"许明洋.ts";
     NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:fileName];
     if ([FCFileManager existsItemAtPath:filePath]) {
         NSLog(@"已经合并过该文件");
