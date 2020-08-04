@@ -428,10 +428,10 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"m3u8"];
     NSString *fileName = @"许明洋.ts";
     NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:fileName];
-    if ([FCFileManager existsItemAtPath:filePath]) {
-        NSLog(@"已经合并过该文件");
-        return;
-    }
+//    if ([FCFileManager existsItemAtPath:filePath]) {
+//        NSLog(@"已经合并过该文件");
+//        return;
+//    }
     
     NSArray *contentArr = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
     NSMutableData *dataArr = [[NSMutableData alloc] init];

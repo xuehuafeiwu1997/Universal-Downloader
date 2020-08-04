@@ -20,6 +20,7 @@
 		B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264DA24C19D63003BC3DB /* DownloadViewController.m */; };
 		B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AB63824C1B2500041BF76 /* DownloadManager.m */; };
 		B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678DC8624C708B2005A6DEA /* TestViewController.m */; };
+		B6C640E724D944A800404D56 /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C640E624D944A800404D56 /* UIViewController+Utils.m */; };
 		B6E188A724C9A45800ECBB4B /* DownloadSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E188A624C9A45800ECBB4B /* DownloadSegment.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		B64AB63A24C1C0E40041BF76 /* AppLog.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLog.pch; sourceTree = "<group>"; };
 		B678DC8524C708B2005A6DEA /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		B678DC8624C708B2005A6DEA /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		B6C640E524D944A800404D56 /* UIViewController+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
+		B6C640E624D944A800404D56 /* UIViewController+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Utils.m"; sourceTree = "<group>"; };
 		B6E188A524C9A45800ECBB4B /* DownloadSegment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadSegment.h; sourceTree = "<group>"; };
 		B6E188A624C9A45800ECBB4B /* DownloadSegment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +158,7 @@
 		B63264BF24C19C83003BC3DB /* 万能下载器 */ = {
 			isa = PBXGroup;
 			children = (
+				B6C640E424D9448000404D56 /* UIViewController */,
 				B61FF7B224C6FEB500EC6E0F /* base */,
 				B63264C024C19C83003BC3DB /* AppDelegate.h */,
 				B63264C124C19C83003BC3DB /* AppDelegate.m */,
@@ -167,6 +171,15 @@
 				B63264D224C19C86003BC3DB /* main.m */,
 			);
 			path = "万能下载器";
+			sourceTree = "<group>";
+		};
+		B6C640E424D9448000404D56 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B6C640E524D944A800404D56 /* UIViewController+Utils.h */,
+				B6C640E624D944A800404D56 /* UIViewController+Utils.m */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61FF7BD24C7009F00EC6E0F /* WNUserViewController.m in Sources */,
+				B6C640E724D944A800404D56 /* UIViewController+Utils.m in Sources */,
 				B63264C224C19C83003BC3DB /* AppDelegate.m in Sources */,
 				B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */,
 				B63264D324C19C86003BC3DB /* main.m in Sources */,

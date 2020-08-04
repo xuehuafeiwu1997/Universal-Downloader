@@ -9,6 +9,7 @@
 #import "DownloadViewController.h"
 #import "Masonry.h"
 #import "DownloadManager.h"
+#import "FCFileManager.h"
 
 @interface DownloadViewController ()<UITextFieldDelegate>
 
@@ -94,8 +95,15 @@
 - (void)finishDownload {
     AppLog(@"终止下载");
     NSLog(@"开始合并ts文件");
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"m3u8"];
+    NSString *fileName = @"许明洋.ts";
+    NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:fileName];
+    if ([FCFileManager existsItemAtPath:filePath]) {
+        NSLog(@"已经合并过该文件");
+        [self showAlertIfComibineFileIsExist:fileName];
+        return;
+    }
     [[DownloadManager sharedInstance] combineTsToVideo];
-
 }
 
 - (void)clearUrl {
@@ -203,5 +211,21 @@
     _clearButton.enabled = YES;
     return _clearButton;
 }
+
+- (void)showAlertIfComibineFileIsExist:(NSString *)fileName {
+    NSString *message = [NSString stringWithFormat:@"%@文件已经存在，是否替换原有的文件?",fileName];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"合并文件" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"合并文件并替换" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[DownloadManager sharedInstance] combineTsToVideo];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        AppLog(@"文件已存在，取消合并文件");
+        return;
+    }];
+    [alertController addAction:defaultAction];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 
 @end

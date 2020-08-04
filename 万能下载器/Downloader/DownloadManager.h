@@ -12,7 +12,10 @@ extern NSString * const WNDownloadM3u8TsSuccessNotification;
 
 @interface DownloadManager : NSObject
 
+//@property (nonatomic, assign) BOOL needToShowAlert;
+
 + (instancetype)sharedInstance;
++ (NSString *)saveFilePath;
 
 - (void)downloadVideoByURl:(NSURL *)url;
 
