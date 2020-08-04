@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const WNDownloadM3u8TsSuccessNotification;
+
 @interface DownloadManager : NSObject
 
 + (instancetype)sharedInstance;

@@ -30,8 +30,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-parseM3U8File:m3u8Url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "-parseM3U8File:m3u8Url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,24 +62,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "-parseM3U8File:m3u8Url:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "579ACA0F-2AE0-46D0-B8A4-4291021C0183"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "-parseM3U8File:m3u8Url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -98,22 +82,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7133EE0-0A46-4AD2-924A-57A26B1D8C83"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "-parseM3U8File:m3u8Url:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2E90D0FA-E295-40A6-A845-445E3B77BCB1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -121,8 +89,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "-parseM3U8File:m3u8Url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -137,8 +105,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-parseM3U8File:m3u8Url:"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,10 +132,10 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
-            landmarkName = "-downloadVideoTsByM3u8File"
-            landmarkType = "7">
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "DownloadManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -180,9 +148,9 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
-            landmarkName = "-downloadVideoTsByM3u8File"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "-fileNameForSegmentNo:fileType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -196,9 +164,9 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
-            landmarkName = "-downloadVideoTsByM3u8File"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "-fileNameForSegmentNo:fileType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -212,9 +180,57 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-FileIsPhotoDownloadTask:didFinishDownloadingToURL:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32D1A722-0BFB-4B12-91BD-799A622EFCB0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "146963BE-3CA8-4DCA-B318-E5EB88476476"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-URLSession:downloadTask:didFinishDownloadingToURL:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2E6A9B9-D84C-4F0E-8099-334FD5E78FAE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "-downloadVideoTsByM3u8File"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
