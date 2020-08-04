@@ -56,7 +56,13 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 
 - (void)downloadTs:(NSNotification *)notification {
     NSInteger index = [notification.userInfo[@"index"] integerValue];
+    //单线程下载ts文件
     [self downloadVideoTsByM3u8FileUsingSignleThread];
+    //多线程下载ts文件
+    runAsynOnDownloadOperationQueue(^{
+        [self downloadVideoTsByM3u8File];
+        NSLog(@"当前的线程是:%@",[NSThread currentThread]);
+    });
 }
 
 + (void)createDirectionaries {
@@ -303,11 +309,11 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     }
     self.segmentInfos = segments;
     //单线程下载m3u8文件
-    [self downloadVideoTsByM3u8FileUsingSignleThread];
+//    [self downloadVideoTsByM3u8FileUsingSignleThread];
     //多线程下载m3u8文件
-//    runAsynOnDownloadOperationQueue(^{
-//       [self downloadVideoTsByM3u8File];
-//    });
+    runAsynOnDownloadOperationQueue(^{
+       [self downloadVideoTsByM3u8File];
+    });
 }
 
 - (void)createLocalM3u8:(NSString *)path {
@@ -349,9 +355,9 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 
 //下载m3u8文件
 - (void)downloadVideoTsByM3u8File {
-//    if ([self.downloadTasks count] >= [self maxDownloadCount]) {
-//        return;
-//    }
+    if ([self.downloadTasks count] >= [self maxDownloadCount]) {
+        return;
+    }
     static int i = 0;
     if (i >= self.segmentInfos.count) {
         return;
@@ -372,7 +378,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     NSLog(@"task的identifier为%lu",(unsigned long)task.taskIdentifier);
     [task resume];
     i++;
-    //（多线程下载m3u8，但是存在问题，经常有ts没有被下载，而跳过）
+    //    （多线程下载m3u8，但是存在问题，经常有ts没有被下载，而跳过）
 //    runAsynOnDownloadOperationQueue(^{
 //        [self downloadVideoTsByM3u8File];
 //        NSLog(@"当前的线程为%@",[NSThread currentThread]);
