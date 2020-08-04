@@ -57,7 +57,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 - (void)downloadTs:(NSNotification *)notification {
     NSInteger index = [notification.userInfo[@"index"] integerValue];
     //单线程下载ts文件
-    [self downloadVideoTsByM3u8FileUsingSignleThread];
+//    [self downloadVideoTsByM3u8FileUsingSignleThread];
     //多线程下载ts文件
     runAsynOnDownloadOperationQueue(^{
         [self downloadVideoTsByM3u8File];
