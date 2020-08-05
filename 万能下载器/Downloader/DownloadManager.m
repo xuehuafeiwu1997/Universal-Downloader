@@ -137,6 +137,9 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     } else if ([type containsString:@"jpg"] || [type containsString:@"png"] || [type containsString:@"JPEG"]) {
         AppLog(@"当前需要下载的文件类型为图片");
         [self FileIsPhotoDownloadTask:downloadTask didFinishDownloadingToURL:location];
+    } else if ([type containsString:@"mp3"]) {
+        AppLog(@"当前需要下载的文件的类型为音乐mp3");
+        [self FileIsMusicMp3DownloadTask:downloadTask didFinishDownloadingToURL:location];
     }
 }
 
@@ -152,6 +155,26 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     }
     NSString *fileName = [NSString stringWithFormat:@"焰灵姬.%@",[self judgePhotoTypeByLocationUrl:location]];
     NSLog(@"当前需要下载的图片的type为:%@",fileName);
+    //将临时存储的文件地址移动到我们自定义的地址中
+    NSString *destinationPath = [path stringByAppendingPathComponent:fileName];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
+    if (error) {
+        AppLog(@"移动图片失败，相应的失效的原因为%@",error);
+    }
+}
+
+//下载的文件是音乐的话，音乐下载后续的处理
+- (void)FileIsMusicMp3DownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"音乐"];
+    if (![FCFileManager existsItemAtPath:path]) {
+        NSError *error = nil;
+        [FCFileManager createDirectoriesForPath:path error:&error];
+        if (error) {
+            AppLog(@"创建音乐文件夹失败，失败的原因是%@",error);
+        }
+    }
+    NSString *fileName = [NSString stringWithFormat:@"唐朝的雨.mp3"];
     //将临时存储的文件地址移动到我们自定义的地址中
     NSString *destinationPath = [path stringByAppendingPathComponent:fileName];
     NSError *error = nil;
