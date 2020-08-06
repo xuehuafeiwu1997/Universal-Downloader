@@ -30,8 +30,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
             landmarkName = "+rootPath"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "+saveFilePath"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "-URLSession:task:didCompleteWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -89,8 +89,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "DownloadManager"
             landmarkType = "3">
          </BreakpointContent>
@@ -105,8 +105,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "-URLSession:task:didCompleteWithError:"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,8 +132,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "-downloadVideoTsByM3u8FileUsingSignleThread"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,8 +148,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
             landmarkName = "-downloadVideoTsByM3u8FileUsingSignleThread"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,8 +164,8 @@
             filePath = "&#x4e07;&#x80fd;&#x4e0b;&#x8f7d;&#x5668;/Downloader/DownloadManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-downloadVideoTsByM3u8FileUsingSignleThread"
             landmarkType = "7">
          </BreakpointContent>

@@ -140,6 +140,9 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     } else if ([type containsString:@"mp3"]) {
         AppLog(@"当前需要下载的文件的类型为音乐mp3");
         [self FileIsMusicMp3DownloadTask:downloadTask didFinishDownloadingToURL:location];
+    } else if ([type containsString:@"txt"] || [type containsString:@"html"]) {
+        AppLog(@"当前需要下载的文件的类型为txt或者是网页html");
+        [self FileIsTxtDownloadTask:downloadTask didFinishDownloadingToURL:location];
     }
 }
 
@@ -161,6 +164,27 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
     if (error) {
         AppLog(@"移动图片失败，相应的失效的原因为%@",error);
+    }
+}
+
+//下载的文件是txt文件时，文本下载的后续的处理
+- (void)FileIsTxtDownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
+//    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"文本"];
+    NSString *path = [[NSString stringWithFormat:@"/Users/xumingyang/Desktop/"] stringByAppendingPathComponent:@"文本"];
+    if (![FCFileManager existsItemAtPath:path]) {
+        NSError *error = nil;
+        [FCFileManager createDirectoriesForPath:path error:&error];
+        if (error) {
+            AppLog(@"创建文本文件夹失败，失败的原因是%@",error);
+        }
+    }
+    NSString *fileName = [NSString stringWithFormat:@"小说.txt"];
+    //将临时存储的文件地址移动到我们自定义的地址中
+    NSString *destinationPath = [path stringByAppendingPathComponent:fileName];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:path] error:&error];
+    if (error) {
+        AppLog(@"移动文本文件失败，失败的原因是:%@",error);
     }
 }
 
@@ -257,6 +281,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
         NSError *err = nil;
         [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:filePath] error:&err];
         NSLog(@"下载的ts文件是否出错%@",err);
+        [self.downloadTasks removeObjectForKey:downloadTask];
         [[NSNotificationCenter defaultCenter] postNotificationName:WNDownloadM3u8TsSuccessNotification object:nil userInfo:@{@"index":@(segment.index)}];
         return;
     }
@@ -400,12 +425,10 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     self.downloadTasks[task] = segment;
     NSLog(@"task的identifier为%lu",(unsigned long)task.taskIdentifier);
     [task resume];
-    i++;
-    //    （多线程下载m3u8，但是存在问题，经常有ts没有被下载，而跳过）
-//    runAsynOnDownloadOperationQueue(^{
-//        [self downloadVideoTsByM3u8File];
-//        NSLog(@"当前的线程为%@",[NSThread currentThread]);
-//    });
+    i++;    
+    runAsynOnDownloadOperationQueue(^{
+        [self downloadVideoTsByM3u8File];
+    });
 }
 
 //单线程下载m3u8,当第一个ts下载完毕之后开始下载第二个ts,
