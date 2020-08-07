@@ -70,6 +70,13 @@
         make.width.equalTo(@60);
         make.height.equalTo(@20);
     }];
+    [self.view addSubview:self.clearButton];
+    [self.clearButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.startButton);
+        make.width.greaterThanOrEqualTo(@0);
+        make.bottom.equalTo(self.startButton.mas_top).offset(-20);
+        make.height.equalTo(@20);
+    }];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -108,6 +115,9 @@
 
 - (void)clearUrl {
     AppLog(@"清除文本框中的url");
+    self.urlTextField.text = @"";
+    [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.clearButton.enabled = NO;
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
@@ -115,10 +125,15 @@
     if (text.length == 0) {
         self.startButton.enabled = NO;
         [self.startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        self.clearButton.enabled = NO;
+        
     } else {
         self.url = [NSURL URLWithString:text];
         self.startButton.enabled = YES;
-        [self.startButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.clearButton.enabled = YES;
+        [self.clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
 }
 
@@ -208,7 +223,7 @@
     [_clearButton addTarget:self action:@selector(clearUrl) forControlEvents:UIControlEventTouchUpInside];
     _clearButton.layer.cornerRadius = 10;
     _clearButton.clipsToBounds = YES;
-    _clearButton.enabled = YES;
+    _clearButton.enabled = NO;//初始url为空，不允许点击
     return _clearButton;
 }
 
