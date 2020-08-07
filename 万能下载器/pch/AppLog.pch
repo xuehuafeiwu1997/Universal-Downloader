@@ -9,6 +9,7 @@
 #ifndef AppLog_pch
 #define AppLog_pch
 
+#import "UIColor+Utils.h"
 #define AppLog(format,...); NSLog((@"方法名:%s , 行号:%d 行," format), __FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 #endif /* AppLog_pch */

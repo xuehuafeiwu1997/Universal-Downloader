@@ -11,10 +11,11 @@
 #import "DownloadManager.h"
 #import "FCFileManager.h"
 
-@interface DownloadViewController ()<UITextFieldDelegate>
+@interface DownloadViewController ()<UITextViewDelegate>
 
 @property (nonatomic, strong) UILabel *instructLabel;
-@property (nonatomic, strong) UITextField *urlTextField;
+//@property (nonatomic, strong) UITextField *urlTextField;
+@property (nonatomic, strong) UITextView *textView;
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) UIButton *pauseButton;
 @property (nonatomic, strong) UIButton *finishButton;
@@ -40,12 +41,20 @@
         make.height.equalTo(@30);
     }];
 
-    [self.view addSubview:self.urlTextField];
-    [self.urlTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.instructLabel.mas_right).offset(20);
-        make.centerY.equalTo(self.instructLabel);
-        make.width.greaterThanOrEqualTo(@0);
-        make.height.equalTo(@30);
+//    [self.view addSubview:self.urlTextField];
+//    [self.urlTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.instructLabel.mas_right).offset(20);
+//        make.centerY.equalTo(self.instructLabel);
+//        make.width.greaterThanOrEqualTo(@0);
+//        make.height.equalTo(@30);
+//    }];
+    
+    [self.view addSubview:self.textView];
+    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.instructLabel);
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.instructLabel.mas_bottom).offset(20);
+        make.height.equalTo(@100);
     }];
     
     [self.view addSubview:self.startButton];
@@ -79,11 +88,29 @@
     }];
 }
 
-#pragma mark - UITextFieldDelegate
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.urlTextField resignFirstResponder];
-    return YES;
+#pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView {
+    NSInteger length = textView.text.length;
+    if (length == 0) {
+        self.startButton.enabled = NO;
+        [self.startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        self.clearButton.enabled = NO;
+        
+    } else {
+        self.url = [NSURL URLWithString:textView.text];
+        self.startButton.enabled = YES;
+        [self.startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.clearButton.enabled = YES;
+        [self.clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 }
+
+//#pragma mark - UITextFieldDelegate
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    [self.urlTextField resignFirstResponder];
+//    return YES;
+//}
 
 #pragma mark - 下载、暂停和结束
 
@@ -115,27 +142,28 @@
 
 - (void)clearUrl {
     AppLog(@"清除文本框中的url");
-    self.urlTextField.text = @"";
+//    self.urlTextField.text = @"";
+    self.textView.text = @"";
     [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     self.clearButton.enabled = NO;
 }
 
-- (void)textFieldDidChange:(UITextField *)textField {
-    NSString *text = textField.text;
-    if (text.length == 0) {
-        self.startButton.enabled = NO;
-        [self.startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        self.clearButton.enabled = NO;
-        
-    } else {
-        self.url = [NSURL URLWithString:text];
-        self.startButton.enabled = YES;
-        [self.startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        self.clearButton.enabled = YES;
-        [self.clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
-}
+//- (void)textFieldDidChange:(UITextField *)textField {
+//    NSString *text = textField.text;
+//    if (text.length == 0) {
+//        self.startButton.enabled = NO;
+//        [self.startButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//        [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//        self.clearButton.enabled = NO;
+//        
+//    } else {
+//        self.url = [NSURL URLWithString:text];
+//        self.startButton.enabled = YES;
+//        [self.startButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        self.clearButton.enabled = YES;
+//        [self.clearButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    }
+//}
 
 #pragma mark - lazy load
 - (UILabel *)instructLabel {
@@ -150,17 +178,31 @@
     return _instructLabel;
 }
 
-- (UITextField *)urlTextField {
-    if (_urlTextField) {
-        return _urlTextField;
+//- (UITextField *)urlTextField {
+//    if (_urlTextField) {
+//        return _urlTextField;
+//    }
+//    _urlTextField = [[UITextField alloc] init];
+//    _urlTextField.font = [UIFont systemFontOfSize:14];
+//    _urlTextField.textColor = [UIColor blackColor];
+//    _urlTextField.placeholder = @"请输入你要下载的URL";
+//    _urlTextField.delegate = self;
+//    [_urlTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//    return _urlTextField;
+//}
+
+- (UITextView *)textView {
+    if (_textView) {
+        return _textView;
     }
-    _urlTextField = [[UITextField alloc] init];
-    _urlTextField.font = [UIFont systemFontOfSize:14];
-    _urlTextField.textColor = [UIColor blackColor];
-    _urlTextField.placeholder = @"请输入你要下载的URL";
-    _urlTextField.delegate = self;
-    [_urlTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    return _urlTextField;
+    _textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    _textView.font = [UIFont systemFontOfSize:14];
+    _textView.textColor = [UIColor blackColor];
+    _textView.backgroundColor = [UIColor whiteColor];
+    _textView.delegate = self;
+    _textView.layer.borderColor = [UIColor colorWithRGB:0xcccccc].CGColor;
+    _textView.layer.borderWidth = 0.5;
+    return _textView;
 }
 
 - (UIButton *)startButton {
@@ -242,5 +284,8 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 @end

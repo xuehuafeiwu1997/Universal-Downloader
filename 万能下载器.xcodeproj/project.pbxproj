@@ -19,6 +19,7 @@
 		B63264D324C19C86003BC3DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264D224C19C86003BC3DB /* main.m */; };
 		B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264DA24C19D63003BC3DB /* DownloadViewController.m */; };
 		B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AB63824C1B2500041BF76 /* DownloadManager.m */; };
+		B670048C24DCEF38004094B7 /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B670048B24DCEF38004094B7 /* UIColor+Utils.m */; };
 		B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678DC8624C708B2005A6DEA /* TestViewController.m */; };
 		B6C640E724D944A800404D56 /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C640E624D944A800404D56 /* UIViewController+Utils.m */; };
 		B6E188A724C9A45800ECBB4B /* DownloadSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E188A624C9A45800ECBB4B /* DownloadSegment.m */; };
@@ -48,6 +49,9 @@
 		B64AB63724C1B2500041BF76 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		B64AB63824C1B2500041BF76 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		B64AB63A24C1C0E40041BF76 /* AppLog.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLog.pch; sourceTree = "<group>"; };
+		B670048A24DCEF38004094B7 /* UIColor+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
+		B670048B24DCEF38004094B7 /* UIColor+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utils.m"; sourceTree = "<group>"; };
+		B670048E24DCEFB7004094B7 /* WNDownload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WNDownload.h; sourceTree = "<group>"; };
 		B678DC8524C708B2005A6DEA /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		B678DC8624C708B2005A6DEA /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		B6C640E524D944A800404D56 /* UIViewController+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Utils.h"; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		B63264BF24C19C83003BC3DB /* 万能下载器 */ = {
 			isa = PBXGroup;
 			children = (
+				B670048D24DCEF8C004094B7 /* pch */,
+				B670048924DCEF13004094B7 /* UIColor */,
 				B6C640E424D9448000404D56 /* UIViewController */,
 				B61FF7B224C6FEB500EC6E0F /* base */,
 				B63264C024C19C83003BC3DB /* AppDelegate.h */,
@@ -167,10 +173,27 @@
 				B63264CC24C19C86003BC3DB /* Assets.xcassets */,
 				B63264CE24C19C86003BC3DB /* LaunchScreen.storyboard */,
 				B63264D124C19C86003BC3DB /* Info.plist */,
-				B64AB63A24C1C0E40041BF76 /* AppLog.pch */,
 				B63264D224C19C86003BC3DB /* main.m */,
 			);
 			path = "万能下载器";
+			sourceTree = "<group>";
+		};
+		B670048924DCEF13004094B7 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				B670048A24DCEF38004094B7 /* UIColor+Utils.h */,
+				B670048B24DCEF38004094B7 /* UIColor+Utils.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		B670048D24DCEF8C004094B7 /* pch */ = {
+			isa = PBXGroup;
+			children = (
+				B64AB63A24C1C0E40041BF76 /* AppLog.pch */,
+				B670048E24DCEFB7004094B7 /* WNDownload.h */,
+			);
+			path = pch;
 			sourceTree = "<group>";
 		};
 		B6C640E424D9448000404D56 /* UIViewController */ = {
@@ -304,6 +327,7 @@
 				B63264C224C19C83003BC3DB /* AppDelegate.m in Sources */,
 				B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */,
 				B63264D324C19C86003BC3DB /* main.m in Sources */,
+				B670048C24DCEF38004094B7 /* UIColor+Utils.m in Sources */,
 				B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */,
 				B61FF7B824C6FF5200EC6E0F /* WNTabBarController.m in Sources */,
 				B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */,
@@ -443,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NC2M6D7A5Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/xumingyang/Desktop/iOS性能优化实战/万能下载器/万能下载器/AppLog.pch";
+				GCC_PREFIX_HEADER = "/Users/xumingyang/Desktop/iOS性能优化实战/万能下载器/万能下载器/pch/AppLog.pch";
 				INFOPLIST_FILE = "万能下载器/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,7 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NC2M6D7A5Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/xumingyang/Desktop/iOS性能优化实战/万能下载器/万能下载器/AppLog.pch";
+				GCC_PREFIX_HEADER = "/Users/xumingyang/Desktop/iOS性能优化实战/万能下载器/万能下载器/pch/AppLog.pch";
 				INFOPLIST_FILE = "万能下载器/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
