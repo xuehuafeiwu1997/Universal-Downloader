@@ -11,7 +11,7 @@
 #import "DownloadManager.h"
 #import "FCFileManager.h"
 
-@interface DownloadViewController ()<UITextViewDelegate>
+@interface DownloadViewController ()<UITextViewDelegate,DownloadDelegate>
 
 @property (nonatomic, strong) UILabel *instructLabel;
 //@property (nonatomic, strong) UITextField *urlTextField;
@@ -20,6 +20,9 @@
 @property (nonatomic, strong) UIButton *pauseButton;
 @property (nonatomic, strong) UIButton *finishButton;
 @property (nonatomic, strong) UIButton *clearButton;
+@property (nonatomic, strong) UIButton *combineTsButton;
+@property (nonatomic, strong) UIButton *convertVideoTypeButton;
+@property (nonatomic, strong) UILabel *typeLabel;
 @property (nonatomic, strong) NSURL *url;
 
 @end
@@ -32,6 +35,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
     self.title = @"万能下载器";
+    
+    [DownloadManager sharedInstance].delegate = self;
     
     [self.view addSubview:self.instructLabel];
     [self.instructLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,6 +60,14 @@
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.instructLabel.mas_bottom).offset(20);
         make.height.equalTo(@100);
+    }];
+    
+    [self.view addSubview:self.typeLabel];
+    [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.textView.mas_bottom).offset(20);
+        make.width.greaterThanOrEqualTo(@0);
+        make.height.equalTo(@20);
     }];
     
     [self.view addSubview:self.startButton];
@@ -86,6 +99,26 @@
         make.bottom.equalTo(self.startButton.mas_top).offset(-20);
         make.height.equalTo(@20);
     }];
+    [self.view addSubview:self.combineTsButton];
+    [self.combineTsButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.clearButton);
+        make.width.greaterThanOrEqualTo(@0);
+        make.height.equalTo(@20);
+    }];
+    [self.view addSubview:self.convertVideoTypeButton];
+    [self.convertVideoTypeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).offset(-20);
+        make.centerY.equalTo(self.combineTsButton);
+        make.width.greaterThanOrEqualTo(@0);
+        make.height.equalTo(@20);
+    }];
+}
+
+#pragma mark - DownloadDelegate
+- (void)updateTypeLabel:(NSString *)message {
+    self.typeLabel.hidden = NO;
+    self.typeLabel.text = message;
 }
 
 #pragma mark - UITextViewDelegate
@@ -128,6 +161,27 @@
 
 - (void)finishDownload {
     AppLog(@"终止下载");
+    
+    //测试解析种子文件的内部
+    NSString *destinationPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"torrent"];
+    NSData *data = [NSData dataWithContentsOfFile:destinationPath];
+    NSLog(@"当前的data为%@",data);
+    uint8_t *bytes = malloc(sizeof(uint8_t));
+    [data getBytes:bytes range:NSMakeRange(0, 1)];
+    NSLog(@"bytes的数据为%s",bytes);
+    free(bytes);
+}
+
+- (void)clearUrl {
+    AppLog(@"清除文本框中的url");
+//    self.urlTextField.text = @"";
+    self.textView.text = @"";
+    [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.clearButton.enabled = NO;
+}
+
+- (void)combineAllDownloadedTS {
+    AppLog(@"合并ts文件");
     NSLog(@"开始合并ts文件");
     NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"m3u8"];
     NSString *fileName = @"许明洋.ts";
@@ -140,12 +194,10 @@
     [[DownloadManager sharedInstance] combineTsToVideo];
 }
 
-- (void)clearUrl {
-    AppLog(@"清除文本框中的url");
-//    self.urlTextField.text = @"";
-    self.textView.text = @"";
-    [self.clearButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    self.clearButton.enabled = NO;
+- (void)convertTsToMp4 {
+    AppLog(@"转换ts文件为mp4");
+    NSString *filePath = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"许明洋.ts"];
+    [[DownloadManager sharedInstance] covertFullTsToMP4:filePath];
 }
 
 //- (void)textFieldDidChange:(UITextField *)textField {
@@ -267,6 +319,44 @@
     _clearButton.clipsToBounds = YES;
     _clearButton.enabled = NO;//初始url为空，不允许点击
     return _clearButton;
+}
+
+- (UIButton *)combineTsButton {
+    if (_combineTsButton) {
+        return _combineTsButton;
+    }
+    _combineTsButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    _combineTsButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_combineTsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_combineTsButton setTitle:@"合并ts文件" forState:UIControlStateNormal];
+    [_combineTsButton addTarget:self action:@selector(combineAllDownloadedTS) forControlEvents:UIControlEventTouchUpInside];
+    _combineTsButton.enabled = NO;
+    return _combineTsButton;
+}
+
+- (UIButton *)convertVideoTypeButton {
+    if (_convertVideoTypeButton) {
+        return _convertVideoTypeButton;
+    }
+    _convertVideoTypeButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    _convertVideoTypeButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_convertVideoTypeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_convertVideoTypeButton setTitle:@"转换ts为mp4" forState:UIControlStateNormal];
+    [_convertVideoTypeButton addTarget:self action:@selector(convertTsToMp4) forControlEvents:UIControlEventTouchUpInside];
+    _convertVideoTypeButton.enabled = NO;
+    return _convertVideoTypeButton;
+}
+
+- (UILabel *)typeLabel {
+    if (_typeLabel) {
+        return _typeLabel;
+    }
+    _typeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _typeLabel.font = [UIFont systemFontOfSize:14];
+    _typeLabel.textColor = [UIColor blackColor];
+    _typeLabel.textAlignment = NSTextAlignmentCenter;
+    _typeLabel.hidden = YES;
+    return _typeLabel;
 }
 
 - (void)showAlertIfComibineFileIsExist:(NSString *)fileName {

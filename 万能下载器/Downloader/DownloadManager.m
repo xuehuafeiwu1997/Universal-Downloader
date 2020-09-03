@@ -10,6 +10,8 @@
 #import "FCFileManager.h"
 #import "NSString+Ruby.h"
 #import "DownloadSegment.h"
+#import "DownloadResource.h"
+#import "DownloadDBHelper.h"
 
 NSString * const WNDownloadM3u8TsSuccessNotification = @"WNDownloadM3u8TsSuccessNotification";
 
@@ -114,6 +116,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     
     NSString *type = [self.url absoluteString];
+    NSString *message = nil;
     if ([type containsString:@"m3u8"]) {
         AppLog(@"当前需要下载的文件类型为m3u8");
 //        NSData *m3u8Data = [NSData dataWithContentsOfURL:location];
@@ -130,19 +133,32 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 //            AppLog(@"判断文件类型错误");
 //            return;
 //        }
+        message = @"当前下载的文件类型为m3u8";
         [self FileIsM3U8DownloadTask:downloadTask didFinishDownloadingToURL:location];
     } else if ([type containsString:@"mp4"]) {
         AppLog(@"当前需要下载的文件类型为视频mp4");
         [self FileIsMp4DownloadTask:downloadTask didFinishDownloadingToURL:location];
+        message = @"当前下载的文件类型为mp4";
     } else if ([type containsString:@"jpg"] || [type containsString:@"png"] || [type containsString:@"JPEG"]) {
         AppLog(@"当前需要下载的文件类型为图片");
+        message = @"当前下载的类型为图片";
         [self FileIsPhotoDownloadTask:downloadTask didFinishDownloadingToURL:location];
     } else if ([type containsString:@"mp3"]) {
         AppLog(@"当前需要下载的文件的类型为音乐mp3");
+        message = @"当前需要下载的文件类型为mp3";
         [self FileIsMusicMp3DownloadTask:downloadTask didFinishDownloadingToURL:location];
     } else if ([type containsString:@"txt"] || [type containsString:@"html"]) {
         AppLog(@"当前需要下载的文件的类型为txt或者是网页html");
+        message = @"当前需要下载的文件类型为txt";
         [self FileIsTxtDownloadTask:downloadTask didFinishDownloadingToURL:location];
+    } else {
+        [self FileIsTxtDownloadTask:downloadTask didFinishDownloadingToURL:location];
+    }
+    //因为这是在子线程中执行的，所以下面的代码也是在子线程中执行的，需要将更新UI的代码放在主线程中执行,否则会报错
+    if (self.delegate && [self.delegate respondsToSelector:@selector(updateTypeLabel:)]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [self.delegate updateTypeLabel:message];
+        });
     }
 }
 
@@ -170,7 +186,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 //下载的文件是txt文件时，文本下载的后续的处理
 - (void)FileIsTxtDownloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
 //    NSString *path = [[DownloadManager saveFilePath] stringByAppendingPathComponent:@"文本"];
-    NSString *path = [[NSString stringWithFormat:@"/Users/xumingyang/Desktop/"] stringByAppendingPathComponent:@"文本"];
+    NSString *path = [[NSString stringWithFormat:@"/Users/xumingyang/Desktop/"] stringByAppendingPathComponent:@"Novel"];
     if (![FCFileManager existsItemAtPath:path]) {
         NSError *error = nil;
         [FCFileManager createDirectoriesForPath:path error:&error];
@@ -178,14 +194,23 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
             AppLog(@"创建文本文件夹失败，失败的原因是%@",error);
         }
     }
-    NSString *fileName = [NSString stringWithFormat:@"小说.txt"];
+    NSString *fileName = @"我师兄实在是太稳健了.txt";
     //将临时存储的文件地址移动到我们自定义的地址中
     NSString *destinationPath = [path stringByAppendingPathComponent:fileName];
     NSError *error = nil;
-    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:path] error:&error];
+    [[NSFileManager defaultManager] moveItemAtURL:location toURL:[NSURL fileURLWithPath:destinationPath] error:&error];
     if (error) {
         AppLog(@"移动文本文件失败，失败的原因是:%@",error);
+        return;
     }
+    DownloadResource *resource = [[DownloadResource alloc] init];
+    resource.url = self.url;
+    resource.fileName = fileName;
+    resource.type = WNResourceTypeHtml;
+    resource.savePath = destinationPath;
+    resource.isSuccess = YES;
+    resource.isDelete = NO;
+    [DownloadDBHelper insertResourceObject:resource];
 }
 
 //下载的文件是音乐的话，音乐下载后续的处理
@@ -425,7 +450,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
     self.downloadTasks[task] = segment;
     NSLog(@"task的identifier为%lu",(unsigned long)task.taskIdentifier);
     [task resume];
-    i++;    
+    i++;
     runAsynOnDownloadOperationQueue(^{
         [self downloadVideoTsByM3u8File];
     });
@@ -507,7 +532,7 @@ void runAsynOnDownloadOperationQueue(void (^block) (void)) {
 }
 
 //将合并后的ts文件转换成mp4格式 （需要使用ffmpeg 目前还是先不做了，留个接口在这）
-- (void)coverFullTsToMP4:(NSString *)filePath {
+- (void)covertFullTsToMP4:(NSString *)filePath {
     
 }
 

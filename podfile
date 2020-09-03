@@ -8,4 +8,5 @@ target '万能下载器' do
    pod 'Masonry'
    pod 'FCFileManager', '~> 1.0.19'
    pod 'NSString+Ruby', '~> 1.1'
+   pod 'FMDB', '~> 2.7.2'
 end

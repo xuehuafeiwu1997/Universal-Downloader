@@ -10,9 +10,15 @@
 
 extern NSString * const WNDownloadM3u8TsSuccessNotification;
 
+@protocol DownloadDelegate <NSObject>
+
+- (void)updateTypeLabel:(NSString *)message;
+
+@end
+
 @interface DownloadManager : NSObject
 
-
+@property (nonatomic, weak) id<DownloadDelegate> delegate;
 
 + (instancetype)sharedInstance;
 + (NSString *)saveFilePath;
@@ -21,6 +27,9 @@ extern NSString * const WNDownloadM3u8TsSuccessNotification;
 
 //将TS文件合并
 - (void)combineTsToVideo;
+
+//将ts文件转换为mp4
+- (void)covertFullTsToMP4:(NSString *)filePath;
 
 @end
 

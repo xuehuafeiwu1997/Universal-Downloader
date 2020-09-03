@@ -1,24 +1,30 @@
 PODS:
   - FCFileManager (1.0.20)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - Masonry (1.1.0)
   - "NSString+Ruby (1.1)"
 
 DEPENDENCIES:
   - FCFileManager (~> 1.0.19)
+  - FMDB (~> 2.7.2)
   - Masonry
   - "NSString+Ruby (~> 1.1)"
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - FCFileManager
+    - FMDB
     - Masonry
     - "NSString+Ruby"
 
 SPEC CHECKSUMS:
   FCFileManager: e0f73316e6aa2eb04d2ff4caa75fe7df1ae44270
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   "NSString+Ruby": e68b2d9408107888f3d82436b0d1cd24c66c4b5b
 
-PODFILE CHECKSUM: bf0130ba40f81bf160935675ab1b7f8fc1a9c9b6
+PODFILE CHECKSUM: 30106f9c98c2a302526eb4a6d8df94a0789e6c22
 
 COCOAPODS: 1.9.0

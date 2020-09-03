@@ -19,6 +19,9 @@
 		B63264D324C19C86003BC3DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264D224C19C86003BC3DB /* main.m */; };
 		B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63264DA24C19D63003BC3DB /* DownloadViewController.m */; };
 		B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B64AB63824C1B2500041BF76 /* DownloadManager.m */; };
+		B66685EC24E53B920007EE5F /* DBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B66685EB24E53B920007EE5F /* DBHelper.m */; };
+		B66685EF24E53D9B0007EE5F /* DownloadDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B66685EE24E53D9B0007EE5F /* DownloadDBHelper.m */; };
+		B66685F224E53E620007EE5F /* DownloadResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B66685F124E53E620007EE5F /* DownloadResource.m */; };
 		B670048C24DCEF38004094B7 /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B670048B24DCEF38004094B7 /* UIColor+Utils.m */; };
 		B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B678DC8624C708B2005A6DEA /* TestViewController.m */; };
 		B6C640E724D944A800404D56 /* UIViewController+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C640E624D944A800404D56 /* UIViewController+Utils.m */; };
@@ -49,6 +52,12 @@
 		B64AB63724C1B2500041BF76 /* DownloadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		B64AB63824C1B2500041BF76 /* DownloadManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		B64AB63A24C1C0E40041BF76 /* AppLog.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppLog.pch; sourceTree = "<group>"; };
+		B66685EA24E53B920007EE5F /* DBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBHelper.h; sourceTree = "<group>"; };
+		B66685EB24E53B920007EE5F /* DBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBHelper.m; sourceTree = "<group>"; };
+		B66685ED24E53D9B0007EE5F /* DownloadDBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadDBHelper.h; sourceTree = "<group>"; };
+		B66685EE24E53D9B0007EE5F /* DownloadDBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadDBHelper.m; sourceTree = "<group>"; };
+		B66685F024E53E620007EE5F /* DownloadResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloadResource.h; sourceTree = "<group>"; };
+		B66685F124E53E620007EE5F /* DownloadResource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownloadResource.m; sourceTree = "<group>"; };
 		B670048A24DCEF38004094B7 /* UIColor+Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
 		B670048B24DCEF38004094B7 /* UIColor+Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utils.m"; sourceTree = "<group>"; };
 		B670048E24DCEFB7004094B7 /* WNDownload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WNDownload.h; sourceTree = "<group>"; };
@@ -106,6 +115,10 @@
 				B64AB63824C1B2500041BF76 /* DownloadManager.m */,
 				B6E188A524C9A45800ECBB4B /* DownloadSegment.h */,
 				B6E188A624C9A45800ECBB4B /* DownloadSegment.m */,
+				B66685F024E53E620007EE5F /* DownloadResource.h */,
+				B66685F124E53E620007EE5F /* DownloadResource.m */,
+				B66685ED24E53D9B0007EE5F /* DownloadDBHelper.h */,
+				B66685EE24E53D9B0007EE5F /* DownloadDBHelper.m */,
 			);
 			path = Downloader;
 			sourceTree = "<group>";
@@ -162,6 +175,7 @@
 		B63264BF24C19C83003BC3DB /* 万能下载器 */ = {
 			isa = PBXGroup;
 			children = (
+				B66685E924E539FA0007EE5F /* DB */,
 				B670048D24DCEF8C004094B7 /* pch */,
 				B670048924DCEF13004094B7 /* UIColor */,
 				B6C640E424D9448000404D56 /* UIViewController */,
@@ -176,6 +190,15 @@
 				B63264D224C19C86003BC3DB /* main.m */,
 			);
 			path = "万能下载器";
+			sourceTree = "<group>";
+		};
+		B66685E924E539FA0007EE5F /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				B66685EA24E53B920007EE5F /* DBHelper.h */,
+				B66685EB24E53B920007EE5F /* DBHelper.m */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		B670048924DCEF13004094B7 /* UIColor */ = {
@@ -323,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61FF7BD24C7009F00EC6E0F /* WNUserViewController.m in Sources */,
+				B66685F224E53E620007EE5F /* DownloadResource.m in Sources */,
 				B6C640E724D944A800404D56 /* UIViewController+Utils.m in Sources */,
 				B63264C224C19C83003BC3DB /* AppDelegate.m in Sources */,
 				B678DC8724C708B2005A6DEA /* TestViewController.m in Sources */,
@@ -331,7 +355,9 @@
 				B63264DB24C19D63003BC3DB /* DownloadViewController.m in Sources */,
 				B61FF7B824C6FF5200EC6E0F /* WNTabBarController.m in Sources */,
 				B64AB63924C1B2500041BF76 /* DownloadManager.m in Sources */,
+				B66685EC24E53B920007EE5F /* DBHelper.m in Sources */,
 				B6E188A724C9A45800ECBB4B /* DownloadSegment.m in Sources */,
+				B66685EF24E53D9B0007EE5F /* DownloadDBHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
