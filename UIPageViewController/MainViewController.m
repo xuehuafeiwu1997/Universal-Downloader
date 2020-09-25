@@ -91,7 +91,7 @@
     return _tabView;
 }
 
-#pragma mark - UIPageViewControllerDelegate/datesource
+#pragma mark - UIPageViewControllerDelegate/datasource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     if (viewController == self.firstVC) {

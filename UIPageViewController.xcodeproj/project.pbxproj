@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B655120B251DD0F700BDFE55 /* FirstChildOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B655120A251DD0F700BDFE55 /* FirstChildOneViewController.m */; };
+		B655120E251DD23F00BDFE55 /* FirstChildTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B655120D251DD23F00BDFE55 /* FirstChildTwoViewController.m */; };
+		B6551211251DD25900BDFE55 /* FirstChildThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6551210251DD25900BDFE55 /* FirstChildThreeViewController.m */; };
 		B68B5EAD249217F400BE9142 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EAC249217F400BE9142 /* AppDelegate.m */; };
 		B68B5EB3249217F400BE9142 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B5EB2249217F400BE9142 /* ViewController.m */; };
 		B68B5EB8249217F600BE9142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B68B5EB7249217F600BE9142 /* Assets.xcassets */; };
@@ -33,6 +36,12 @@
 		4C609CA138FC88378573A77C /* Pods-UIPageViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIPageViewController.debug.xcconfig"; path = "Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController.debug.xcconfig"; sourceTree = "<group>"; };
 		81C1DE1A4DB482E776F9950C /* Pods_UIPageViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIPageViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CAE8AC192C67A80EE718BE /* Pods-UIPageViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIPageViewController.release.xcconfig"; path = "Target Support Files/Pods-UIPageViewController/Pods-UIPageViewController.release.xcconfig"; sourceTree = "<group>"; };
+		B6551209251DD0F700BDFE55 /* FirstChildOneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstChildOneViewController.h; sourceTree = "<group>"; };
+		B655120A251DD0F700BDFE55 /* FirstChildOneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstChildOneViewController.m; sourceTree = "<group>"; };
+		B655120C251DD23F00BDFE55 /* FirstChildTwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstChildTwoViewController.h; sourceTree = "<group>"; };
+		B655120D251DD23F00BDFE55 /* FirstChildTwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstChildTwoViewController.m; sourceTree = "<group>"; };
+		B655120F251DD25900BDFE55 /* FirstChildThreeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstChildThreeViewController.h; sourceTree = "<group>"; };
+		B6551210251DD25900BDFE55 /* FirstChildThreeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstChildThreeViewController.m; sourceTree = "<group>"; };
 		B68B5EA8249217F400BE9142 /* UIPageViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIPageViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68B5EAB249217F400BE9142 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B68B5EAC249217F400BE9142 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +140,12 @@
 				B68B5EC52492183F00BE9142 /* MainViewController.m */,
 				B68B5EC724921EAB00BE9142 /* FirstViewController.h */,
 				B68B5EC824921EAB00BE9142 /* FirstViewController.m */,
+				B6551209251DD0F700BDFE55 /* FirstChildOneViewController.h */,
+				B655120A251DD0F700BDFE55 /* FirstChildOneViewController.m */,
+				B655120C251DD23F00BDFE55 /* FirstChildTwoViewController.h */,
+				B655120D251DD23F00BDFE55 /* FirstChildTwoViewController.m */,
+				B655120F251DD25900BDFE55 /* FirstChildThreeViewController.h */,
+				B6551210251DD25900BDFE55 /* FirstChildThreeViewController.m */,
 				B68B5ECA24921EB700BE9142 /* SecondViewController.h */,
 				B68B5ECB24921EB700BE9142 /* SecondViewController.m */,
 				B68B5ECD24921EC700BE9142 /* ThirdViewController.h */,
@@ -299,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B655120B251DD0F700BDFE55 /* FirstChildOneViewController.m in Sources */,
 				B68B5ED524922EEF00BE9142 /* HJTabCollectionViewCell.m in Sources */,
 				B68B5F022493659500BE9142 /* Main2ViewController.m in Sources */,
 				B68B5F1924976B8F00BE9142 /* XMYTabViewNew.m in Sources */,
@@ -311,11 +327,13 @@
 				B68B5ED82492306E00BE9142 /* UIColor+Utils.m in Sources */,
 				B68B5F062493662300BE9142 /* XMYTabView.m in Sources */,
 				B68B5EC924921EAB00BE9142 /* FirstViewController.m in Sources */,
+				B6551211251DD25900BDFE55 /* FirstChildThreeViewController.m in Sources */,
 				B68B5F1F24986CBA00BE9142 /* UIPageViewController+Scroll.m in Sources */,
 				B68B5EBE249217F600BE9142 /* main.m in Sources */,
 				B68B5EC62492183F00BE9142 /* MainViewController.m in Sources */,
 				B68B5F222498A26E00BE9142 /* NSObject+Utils.m in Sources */,
 				B68B5ECF24921EC700BE9142 /* ThirdViewController.m in Sources */,
+				B655120E251DD23F00BDFE55 /* FirstChildTwoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
