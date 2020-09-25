@@ -65,6 +65,7 @@
 - (void)onScrollViewContentOffsetDidChange:(CGPoint)contentOffset {
     CGFloat x = contentOffset.x - CGRectGetWidth(self.hj_contentScrollView.bounds);
     NSLog(@"contentOffset的偏移量为%f",x);
+    NSLog(@"当前的scrollViewDelegate为%@",self.scrollViewDelegate);
     if (self.scrollViewDelegate && [self.scrollViewDelegate respondsToSelector:@selector(pageViewController:scrollViewDidScroll:)]) {
         [self.scrollViewDelegate pageViewController:self scrollViewDidScroll:x];
     }

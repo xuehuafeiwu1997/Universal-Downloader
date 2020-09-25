@@ -83,7 +83,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "71286D90-4A0E-4E9D-A7A7-8F7646019A3E"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UIPageViewController/pageViewController&#x5c01;&#x88c5;/UIPageViewController+Scroll.m"
@@ -185,8 +185,8 @@
             filePath = "UIPageViewController/pageViewController&#x5c01;&#x88c5;/UIPageViewController+Scroll.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-hj_contentScrollView"
             landmarkType = "7">
          </BreakpointContent>
@@ -194,64 +194,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "809B256A-555A-4874-82A7-A115212C1345"
+            uuid = "C736A2DE-5EE2-4C51-851F-5DE98303CC88"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UIPageViewController/HJTabView.m"
+            filePath = "UIPageViewController/FirstViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-pageViewController:scrollViewDidScroll:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "ECB24EC7-4A9C-47AD-A16B-86E60FB42864"
+            uuid = "B0F20838-B298-4857-800D-2B11A9C499E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UIPageViewController/HJTabView.m"
+            filePath = "UIPageViewController/pageViewController&#x5c01;&#x88c5;/UIPageViewController+Scroll.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-setUnderLineViewOffset:"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A3A20A15-F666-4CDE-8DA4-73AB7D6AB618"
+            uuid = "616DA9CE-8682-48E3-BCBA-4046244AFE52"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UIPageViewController/HJTabView.m"
+            filePath = "UIPageViewController/pageViewController&#x5c01;&#x88c5;/UIPageViewController+Scroll.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-initView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0745119E-9CB6-42CE-A524-DA8EFCA01760"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UIPageViewController/HJTabView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-setSelectIndex:"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-onScrollViewContentOffsetDidChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
